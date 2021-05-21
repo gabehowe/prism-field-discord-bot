@@ -29,7 +29,7 @@ const createAPIMessage = async (interaction, content) => {
 client.on('ready', async () => {
     console.log('Ready!');
     const sammyGuild = client.guilds.cache.get(sammyGuildId)
-    //runYoutubeChecker(client, sammyGuild,language)
+    runYoutubeChecker(client, sammyGuild,language)
     const commands = await getApp(sammyGuildId).commands.get()
     if (!commands.toString().includes("ping")) {
         await getApp(sammyGuildId).commands.post({
