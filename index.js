@@ -109,7 +109,7 @@ client.on('ready', async () => {
 });
 
 client.ws.on('INTERACTION_CREATE', async (interaction) => {
-    const isElection = Boolean.valueOf(fs.readFileSync("./elections/ended.txt"))
+    const isElection = JSON.parse(fs.readFileSync("./elections/isElection.json"))
     const command = interaction.data.name.toLowerCase()
     const {name, options} = interaction.data
     const args = {}
@@ -137,7 +137,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
     }
     else if (command === "vote") {
         let candidate = client.guilds.cache.get(interaction.guild_id).members.cache.get(args['candidate'])
-        if (isElection) {
+        if (!isElection) {
             await reply(interaction, language["no_election"], 4)
             return
         }
@@ -159,7 +159,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         await reply(interaction, language["vote_submitted"], 4)
     }
     else if (command === "votecount") {
-        if (isElection) {
+        if (!isElection) {
             await reply(interaction, language["no_election"], 4)
             return
         }
@@ -176,7 +176,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         }
         fs.writeFileSync("./elections/elections.json", "{}")
         fs.truncateSync("./elections/votes.txt")
-        fs.writeFileSync("./elections/ended.txt", "true")
+        fs.writeFileSync("./elections/isElection.json", "true")
         await reply(interaction, language["election_started"], 4)
     }
     else if (command === "endelection") {
@@ -189,15 +189,16 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         }
         const scores = countVotes()
         const channel = client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id)
+        await reply(interaction, "Election ended.", 4)
         if (scores[0] === undefined) {
-            reply(interaction, language["no_votes"], 4)
+            channel.send(language["no_votes"])
             fs.writeFileSync("./elections/elections.json", "{}")
             fs.truncateSync("./elections/votes.txt")
+            fs.writeFileSync("./elections/isElection.json", "false")
             return
         }
-        channel.send("Election ended.")
-        countVotesEmbed(interaction)
-        fs.writeFileSync("./elections/ended.txt", "false")
+        countVotesEmbed(interaction, channel)
+        fs.writeFileSync("./elections/isElection.json", "false")
         if (scores[1]) {
             if (scores[0].count === scores[1].count) {
                 channel.send("It was a tie!")
@@ -267,7 +268,7 @@ client.on('messageReactionAdd', listener => {
 client.login(token).then(() => {
 })
 
-function countVotesEmbed(interaction, language, client) {
+function countVotesEmbed(interaction, channel) {
     const scores = countVotes()
     const embed = new Discord.MessageEmbed()
         .setAuthor(language["current_votes"], client.user.avatarURL())
@@ -276,7 +277,7 @@ function countVotesEmbed(interaction, language, client) {
         string += (key["name"] + ": " + key["count"] + "\n")
     })
     embed.setDescription(string)
-    reply(interaction, embed, 4)
+    channel.send(embed)
 }
 
 function countVotes() {
