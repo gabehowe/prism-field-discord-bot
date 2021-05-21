@@ -1,8 +1,6 @@
-const fs = require("fs");
-const Discord = require("discord.js");
-const {client} = require("../index");
-
-
-
-
-module.exports = {countVotesEmbed, createAPIMessage, getRandomInt}
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+module.exports = {getRandomInt}

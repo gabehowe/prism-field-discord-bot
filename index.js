@@ -1,51 +1,35 @@
 const Discord = require('discord.js')
 const fs = require('fs')
-const {spawn} = require("child_process")
+const {handleMessage} = require("./src/messageHandler");
 const client = new Discord.Client()
 const config = JSON.parse(fs.readFileSync("config.json"))
 const token = config['token']
 const sammyGuildId = config['sammy_guild_id']
 let language = JSON.parse(fs.readFileSync("language.json"))
-let playlistItemsArray = []
-let latestVids = []
+const {runYoutubeChecker} = require("./src/youtubeHandler")
 
-const getApp = async (guildId) => {
+const getApp = (guildId) => {
     const app = client.api.applications(client.user.id)
     if (guildId) {
         app.guilds(guildId)
     }
     return app
 }
+const createAPIMessage = async (interaction, content) => {
+    const {data, files} = await Discord.APIMessage.create(
+        client.channels.resolve(interaction.channel_id),
+        content
+    )
+        .resolveData()
+        .resolveFiles()
+
+    return {...data, files}
+}
 
 client.on('ready', async () => {
     console.log('Ready!');
-    updateJSON()
-    // playlistItemsArray += JSON.parse(fs.readFileSync(""))
-    // latestVids += playlistItemsArray["items"][0]
-    // const sammyGuild = client.guilds.cache.get(sammyGuildId)
-
-    function updateJSON() {
-        spawn('python', ['youtube/updateJSON.py'])
-    }
-
-    setInterval(() => {
-        updateJSON()
-        fs.readFile("youtube.json", {encoding: "utf-8"}, (err, data) => {
-            playlistItemsArray = JSON.parse(data)
-            if (playlistItemsArray["items"][0]['snippet']['resourceId']["videoId"] !== latestVids['snippet']['resourceId']["videoId"]) {
-                if (sammyGuild === undefined) {
-                    return
-                }
-                client.channels.cache.get('703951319538335775').send(
-                    language['new_video'] + `\n https://youtu.be/${playlistItemsArray["items"][0]['snippet']["resourceId"]["videoId"]}
-                `).catch(err => {
-                    console.log("Error sending the message")
-                })
-            }
-            latestVids += playlistItemsArray["items"][0]
-        })
-
-    }, 15 * 1000)
+    const sammyGuild = client.guilds.cache.get(sammyGuildId)
+    //runYoutubeChecker(client, sammyGuild,language)
     const commands = await getApp(sammyGuildId).commands.get()
     if (!commands.toString().includes("ping")) {
         await getApp(sammyGuildId).commands.post({
@@ -125,7 +109,7 @@ client.on('ready', async () => {
 });
 
 client.ws.on('INTERACTION_CREATE', async (interaction) => {
-    let electionOver = Boolean.valueOf(fs.readFileSync("./elections/ended.txt"))
+    const isElection = Boolean.valueOf(fs.readFileSync("./elections/ended.txt"))
     const command = interaction.data.name.toLowerCase()
     const {name, options} = interaction.data
     const args = {}
@@ -153,7 +137,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
     }
     else if (command === "vote") {
         let candidate = client.guilds.cache.get(interaction.guild_id).members.cache.get(args['candidate'])
-        if (electionOver) {
+        if (isElection) {
             await reply(interaction, language["no_election"], 4)
             return
         }
@@ -175,14 +159,14 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         await reply(interaction, language["vote_submitted"], 4)
     }
     else if (command === "votecount") {
-        if (electionOver) {
+        if (isElection) {
             await reply(interaction, language["no_election"], 4)
             return
         }
         await countVotesEmbed(interaction)
     }
     else if (command === "startelection") {
-        if (!electionOver) {
+        if (isElection) {
             await reply(interaction, language["election_already_started"], 4)
             return
         }
@@ -190,21 +174,19 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             await reply(interaction, language["no_permission"], 4)
             return
         }
-        electionOver = false
         fs.writeFileSync("./elections/elections.json", "{}")
         fs.truncateSync("./elections/votes.txt")
-        fs.writeFileSync("./elections/ended.txt", "false")
+        fs.writeFileSync("./elections/ended.txt", "true")
         await reply(interaction, language["election_started"], 4)
     }
     else if (command === "endelection") {
-        if (electionOver) {
+        if (!isElection) {
             await reply(interaction, language["election_already_ended"], 4)
             return
         }
         if (!interaction.member.roles.includes('703949595297972314')) {
             await reply(interaction, language["no_permission"], 4)
         }
-        electionOver = true
         const scores = countVotes()
         const channel = client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id)
         if (scores[0] === undefined) {
@@ -215,7 +197,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         }
         channel.send("Election ended.")
         countVotesEmbed(interaction)
-        fs.writeFileSync("./elections/ended.txt", "true")
+        fs.writeFileSync("./elections/ended.txt", "false")
         if (scores[1]) {
             if (scores[0].count === scores[1].count) {
                 channel.send("It was a tie!")
@@ -282,7 +264,7 @@ client.on('error', err => {
 client.on('messageReactionAdd', listener => {
 })
 
-client.login(token).then(r => {
+client.login(token).then(() => {
 })
 
 function countVotesEmbed(interaction, language, client) {
@@ -311,20 +293,20 @@ function countVotes() {
     return scores
 }
 
+const reply = async (interaction, response) => {
+    let data = {
+        content: response,
+    }
 
-const createAPIMessage = async (interaction, content, client) => {
-    const {data, files} = await Discord.APIMessage.create(
-        client.channels.resolve(interaction.channel_id),
-        content
-    )
-        .resolveData()
-        .resolveFiles()
+    // Check for embeds
+    if (typeof response === 'object') {
+        data = await createAPIMessage(interaction, response)
+    }
 
-    return {...data, files}
-}
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    client.api.interactions(interaction.id, interaction.token).callback.post({
+        data: {
+            type: 4,
+            data,
+        },
+    })
 }
