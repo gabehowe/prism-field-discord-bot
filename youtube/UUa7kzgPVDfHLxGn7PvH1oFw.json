@@ -1,0 +1,241 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "etag": "ZdK5W_rs4tjckgoo8olC58nweek",
+  "nextPageToken": "CAUQAA",
+  "items": [
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "OoKisST1yAf83qBjMReu-s6nlCU",
+      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkNsRmc1U2IxLUZN",
+      "snippet": {
+        "publishedAt": "2021-05-14T19:56:29Z",
+        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
+        "title": "mentality - original song by PrisMusic and AphophisXD",
+        "description": "1 person asked for this, so here it is.\n\nSPOTIFY: https://spoti.fi/3tO5cZM\nITUNES: https://apple.co/2RdbuFc",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ClFg5Sb1-FM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ClFg5Sb1-FM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ClFg5Sb1-FM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/ClFg5Sb1-FM/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/ClFg5Sb1-FM/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "PrisMusic",
+        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "ClFg5Sb1-FM"
+        },
+        "videoOwnerChannelTitle": "PrisMusic",
+        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "n0NyCY3XCFuMV_nmtBgYbJskoRU",
+      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkVYSnVkVktjRGd3",
+      "snippet": {
+        "publishedAt": "2021-05-03T19:25:13Z",
+        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
+        "title": "Twenty One Pilots - Choker (Live Edit)",
+        "description": "I made this one because my pal @SAIsaur X was taking a while. Enjoy!\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\nSocials:\nTwitch channel: bit.ly/twchprof\nInstagram: bit.ly/InstProfile\nDiscord server: https://discord.gg/EHWVQhZ\nFacebook: bit.ly/FaceProfile\nTwitter (most active) bit.ly/TwitterPr\nRoblox profile: bit.ly/RBLXpr\n\nEQUIPMENT:\n🎤Mic: amzn.to/favmic\n📁Production software: Adobe After Effects\n💻Computer: amzn.to/PCcompter\n🖥️Screen: amzn.to/widemontor\n🎙️Mic stand: bit.ly/micstandblue",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EXJudVKcDgw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EXJudVKcDgw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EXJudVKcDgw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/EXJudVKcDgw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "PrisMusic",
+        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
+        "position": 1,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "EXJudVKcDgw"
+        },
+        "videoOwnerChannelTitle": "PrisMusic",
+        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "N9OocQ-PjQuDzoADH9zeGFbGS9w",
+      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3Lm1JcE1nV3VhUTQ0",
+      "snippet": {
+        "publishedAt": "2021-04-27T19:40:51Z",
+        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
+        "title": "009 Soundsystem - Dreamscape (Lizdek Trap Remix)",
+        "description": "Ahhh, the nostalgia\nHope I nailed the vibe down!\nWatch in Fullscreen for the best experience!\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\nSocials:\nTwitch channel: bit.ly/twchprof\nInstagram: bit.ly/InstProfile\nDiscord server: https://discord.gg/EHWVQhZ\nFacebook: bit.ly/FaceProfile\nTwitter (most active) bit.ly/TwitterPr\nRoblox profile: bit.ly/RBLXpr\n\nEQUIPMENT:\n🎤Mic: amzn.to/favmic\n📁Production software: Adobe After Effects\n💻Computer: amzn.to/PCcompter\n🖥️Screen: amzn.to/widemontor\n🎙️Mic stand: bit.ly/micstandblue",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "PrisMusic",
+        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
+        "position": 2,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "mIpMgWuaQ44"
+        },
+        "videoOwnerChannelTitle": "PrisMusic",
+        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "m1D_4iMlwlLwTgbnSK_i33f5Da0",
+      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkFDOU5ENUtFQlRZ",
+      "snippet": {
+        "publishedAt": "2021-04-22T13:55:42Z",
+        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
+        "title": "Cowbell Cowboy (10HZ BASS TEST)",
+        "description": "lmao the name is so cleche sorry about that\nand sorry for your speakers 😉\n\nLyrics: \nSomeone just stepped on my dog\nNow I feel like I'm in fog\nI'm going back to 505\nit's either that or it's the knife\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\nSocials:\nTwitch channel: bit.ly/twchprof\nInstagram: bit.ly/InstProfile\nDiscord server: https://discord.gg/EHWVQhZ\nFacebook: bit.ly/FaceProfile\nTwitter (most active) bit.ly/TwitterPr\nRoblox profile: bit.ly/RBLXpr\n\nEQUIPMENT:\n🎤Mic: amzn.to/favmic\n📁Production software: Adobe After Effects\n💻Computer: amzn.to/PCcompter\n🖥️Screen: amzn.to/widemontor\n🎙️Mic stand: bit.ly/micstandblue",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "PrisMusic",
+        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
+        "position": 3,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "AC9ND5KEBTY"
+        },
+        "videoOwnerChannelTitle": "PrisMusic",
+        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "Y72wOGpIRATjbEKVvhluflfP5Eg",
+      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LlQ1VWpidnBqWnJj",
+      "snippet": {
+        "publishedAt": "2021-04-16T21:46:57Z",
+        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
+        "title": "Twenty One Pilots - Fall Away and Hometown mashup",
+        "description": "Sorrryy the fall away vocals are a little choppy, twenty one pilots don't distribute the vocals for their older songs so I had to use a processed version. \n\nTwenty One Pilots - Fall Away (Vocals)\nTwenty One Pilots - Hometown (Instrumental)\nExtended version (made in FL Studio)\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\nSocials:\nTwitch channel: bit.ly/twchprof\nInstagram: bit.ly/InstProfile\nDiscord server: https://discord.gg/EHWVQhZ\nFacebook: bit.ly/FaceProfile\nTwitter (most active) bit.ly/TwitterPr\nRoblox profile: bit.ly/RBLXpr\n\nEQUIPMENT:\n🎤Mic: amzn.to/favmic\n📁Production software: Adobe After Effects\n💻Computer: amzn.to/PCcompter\n🖥️Screen: amzn.to/widemontor\n🎙️Mic stand: bit.ly/micstandblue",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/T5UjbvpjZrc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/T5UjbvpjZrc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/T5UjbvpjZrc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/T5UjbvpjZrc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/T5UjbvpjZrc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "PrisMusic",
+        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
+        "position": 4,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "T5UjbvpjZrc"
+        },
+        "videoOwnerChannelTitle": "PrisMusic",
+        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 68,
+    "resultsPerPage": 5
+  }
+}
