@@ -6,15 +6,16 @@ const client = new Discord.Client()
 const config = JSON.parse(fs.readFileSync("config.json"))
 const token = config['token']
 const sammyGuildId = config['sammy_guild_id']
-let languages = {}
+const languages = {}
 fs.readdir("./languages/", (err, files) => {
     files.forEach(file => {
+        console.log()
         fs.readFile("./languages/" + file, {encoding: "utf-8"}, (err, data) => {
             languages[file.slice(0,file.lastIndexOf('.'))] = JSON.parse(data)
+            console.log(languages[file.slice(0,file.lastIndexOf('.'))])
         })
     })
 })
-JSON.parse(fs.readFileSync("./languages/english.json"))
 const {runYoutubeChecker} = require("./src/youtubeHandler")
 
 const getApp = (guildId) => {
@@ -37,8 +38,6 @@ const createAPIMessage = async (interaction, content) => {
 
 client.on('ready', async () => {
     console.log('Ready!');
-    const sammyGuild = client.guilds.cache.get(sammyGuildId)
-    await runYoutubeChecker(client, sammyGuild, languages["english"])
     const commands = await getApp(sammyGuildId).commands.get()
     if (!commands.toString().includes("ping")) {
         await getApp(sammyGuildId).commands.post({
@@ -118,7 +117,7 @@ client.on('ready', async () => {
         })
     }
     let array = []
-    Object.keys(languages).forEach( key => {array.push( {name:key,value:key})})
+    Object.keys(languages).forEach( key => {array.push( {name:languages[key]["language_name"],value:key})})
     await getApp(sammyGuildId).commands('845381288738816009').patch({
         data: {
             name: 'config',
@@ -141,6 +140,9 @@ client.on('ready', async () => {
             }, {name: "remove", description: "remove items from the config", type: 2},]
         }
     })
+    console.log("updating config")
+    const sammyGuild = client.guilds.cache.get(sammyGuildId)
+    await runYoutubeChecker(client, sammyGuild, languages["english"])
 
 });
 
@@ -150,9 +152,13 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
     const command = interaction.data.name.toLowerCase()
     const {name, options} = interaction.data
     const args = {}
-    let userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[interaction.member.user.id]["language"]
-    if (userLanguage === undefined) {
-        userLanguage = "english"
+    let userLanguage = ''
+    try {
+        userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[message.member.user.id]["language"]
+    } catch (e) {
+        if (e === TypeError) {
+            userLanguage = "english"
+        }
     }
     if (options) {
         for (const option of options) {
@@ -185,7 +191,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
                 }
                 userData[interaction.member.user.id]["language"] = choice
                 fs.writeFileSync("./user_data/user_data.json", JSON.stringify(userData))
-                reply(interaction, "Set language to " + choice)
+                reply(interaction, "Set language to " + languages[choice]["language_name"])
             }
         }
     }
