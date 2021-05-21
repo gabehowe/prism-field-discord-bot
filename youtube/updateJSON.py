@@ -1,7 +1,7 @@
 import http.client
 import json
 
-with open("../config.json", "r+", encoding="utf-8") as jsonFile:
+with open("config.json", "r+", encoding="utf-8") as jsonFile:
     config = json.load(jsonFile)
 connection = http.client.HTTPSConnection("youtube.googleapis.com")
 for i in config["tracked_playlists"]:

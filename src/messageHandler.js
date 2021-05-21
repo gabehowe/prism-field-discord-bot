@@ -1,18 +1,25 @@
+const fs = require("fs");
 const {getRandomInt} = require("./util");
 
-function handleMessage(message, language, Discord) {
+function handleMessage(message,language, Discord) {
+    let userLanguage = ''
+    try {
+        let userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[message.member.user.id]["language"]
+    } catch (e) {
+        userLanguage = "english"
+    }
     if (message.author.bot) {
         return;
     }
     const rand = getRandomInt(0, 1000)
     if (rand === 1) {
-        message.channel.send(language["ew"] + message.member.displayName)
+        message.channel.send(language[userLanguage]["ew"] + message.member.displayName)
     }
     const args = message.content.toString().slice(0).trim().split(' ');
     const command = args.shift().toLowerCase();
     if (command === '02999ae6-5782-4bd5-a78b-7d25b87fe14c ' && message.member.hasPermission("ADMINISTRATOR")) {
         const embed = new Discord.MessageEmbed()
-        embed.setTitle(language["react_for_roles"])
+        embed.setTitle(language[userLanguage]["react_for_roles"])
         embed.addField("🌎",)
 
     }

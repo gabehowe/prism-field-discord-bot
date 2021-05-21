@@ -1,11 +1,20 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const {loadInteraction} = require("./src/interactions");
 const {handleMessage} = require("./src/messageHandler");
 const client = new Discord.Client()
 const config = JSON.parse(fs.readFileSync("config.json"))
 const token = config['token']
 const sammyGuildId = config['sammy_guild_id']
-let language = JSON.parse(fs.readFileSync("language.json"))
+let languages = {}
+fs.readdir("./languages/", (err, files) => {
+    files.forEach(file => {
+        fs.readFile("./languages/" + file, {encoding: "utf-8"}, (err, data) => {
+            languages[file.slice(0,file.lastIndexOf('.'))] = JSON.parse(data)
+        })
+    })
+})
+JSON.parse(fs.readFileSync("./languages/english.json"))
 const {runYoutubeChecker} = require("./src/youtubeHandler")
 
 const getApp = (guildId) => {
@@ -29,7 +38,7 @@ const createAPIMessage = async (interaction, content) => {
 client.on('ready', async () => {
     console.log('Ready!');
     const sammyGuild = client.guilds.cache.get(sammyGuildId)
-    runYoutubeChecker(client, sammyGuild,language)
+    await runYoutubeChecker(client, sammyGuild, languages["english"])
     const commands = await getApp(sammyGuildId).commands.get()
     if (!commands.toString().includes("ping")) {
         await getApp(sammyGuildId).commands.post({
@@ -50,10 +59,12 @@ client.on('ready', async () => {
                     required: true,
                     type: 4,
                 },
-                ]
+                ],
+                default_permission: true
             }
         })
     }
+    //await getApp(sammyGuildId).commands('829429911185522798').delete()
     if (!commands.toString().includes("sayas")) {
         await getApp(sammyGuildId).commands.post({
             data: {
@@ -106,13 +117,43 @@ client.on('ready', async () => {
             }
         })
     }
+    let array = []
+    Object.keys(languages).forEach( key => {array.push( {name:key,value:key})})
+    await getApp(sammyGuildId).commands('845381288738816009').patch({
+        data: {
+            name: 'config',
+            description: "changes some config options",
+            options: [{
+                name: "set",
+                description: "add items to the config",
+                type: 1,
+                options: [{
+                    name: "language",
+                    description: "pick your language",
+                    type: 3,
+                    choices: array
+                }]
+            }, {
+                name: "list",
+                description: "list items in the config",
+                type: 2,
+                options: []
+            }, {name: "remove", description: "remove items from the config", type: 2},]
+        }
+    })
+
 });
 
 client.ws.on('INTERACTION_CREATE', async (interaction) => {
     const isElection = JSON.parse(fs.readFileSync("./elections/isElection.json"))
+    const channel = client.channels.cache.get(interaction.channel_id)
     const command = interaction.data.name.toLowerCase()
     const {name, options} = interaction.data
     const args = {}
+    let userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[interaction.member.user.id]["language"]
+    if (userLanguage === undefined) {
+        userLanguage = "english"
+    }
     if (options) {
         for (const option of options) {
             const {name, value} = option
@@ -120,7 +161,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         }
     }
     if (command === 'ping') {
-        await reply(interaction, language["pong"], 4)
+        await reply(interaction, languages[userLanguage]["pong"], 4)
     }
     else if (command === "sayas") {
         const guild = client.guilds.cache.get(sammyGuildId)
@@ -131,18 +172,31 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         const embed = new Discord.MessageEmbed()
             .setAuthor(member.displayName, member.user.avatarURL(), 'https://www.youtube.com/watch?v=s-n9TaTdOjA')
             .setDescription(args['message'])
-        const channel = guild.channels.cache.get(interaction.channel_id)
         await reply(interaction, embed, 4)
 
+    }
+    else if (command === "config") {
+        if (options[0]["name"] === "set") {
+            if (options[0]["options"][0]["name"] === "language") {
+                const choice = options[0]["options"][0]["value"]
+                const userData = JSON.parse(fs.readFileSync("./user_data/user_data.json"))
+                if (userData[interaction.member.user.id] === undefined) {
+                    userData[interaction.member.user.id] = {}
+                }
+                userData[interaction.member.user.id]["language"] = choice
+                fs.writeFileSync("./user_data/user_data.json", JSON.stringify(userData))
+                reply(interaction, "Set language to " + choice)
+            }
+        }
     }
     else if (command === "vote") {
         let candidate = client.guilds.cache.get(interaction.guild_id).members.cache.get(args['candidate'])
         if (!isElection) {
-            await reply(interaction, language["no_election"], 4)
+            await reply(interaction, languages[userLanguage]["no_election"], 4)
             return
         }
         if (fs.readFileSync("./elections/votes.txt").toString().includes(interaction.member.user.id)) {
-            await reply(interaction, language["already_voted"], 4)
+            await reply(interaction, languages[userLanguage]["already_voted"], 4)
             return
         }
         fs.appendFile("./elections/votes.txt", interaction.member.user.id + "\n", () => {
@@ -156,48 +210,48 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         }
         fs.writeFileSync("./elections/elections.json", JSON.stringify(JSONfile))
 
-        await reply(interaction, language["vote_submitted"], 4)
+        await reply(interaction, languages[userLanguage]["vote_submitted"], 4)
     }
     else if (command === "votecount") {
         if (!isElection) {
-            await reply(interaction, language["no_election"], 4)
+            await reply(interaction, languages[userLanguage]["no_election"], 4)
             return
         }
-        await countVotesEmbed(interaction)
+        await countVotesEmbed(interaction,channel,userLanguage)
     }
     else if (command === "startelection") {
         if (isElection) {
-            await reply(interaction, language["election_already_started"], 4)
+            await reply(interaction, languages[userLanguage]["election_already_started"], 4)
             return
         }
         if (!interaction.member.roles.includes('703949595297972314')) {
-            await reply(interaction, language["no_permission"], 4)
+            await reply(interaction, languages[userLanguage]["no_permission"], 4)
             return
         }
         fs.writeFileSync("./elections/elections.json", "{}")
         fs.truncateSync("./elections/votes.txt")
         fs.writeFileSync("./elections/isElection.json", "true")
-        await reply(interaction, language["election_started"], 4)
+        await reply(interaction, languages[userLanguage]["election_started"], 4)
     }
     else if (command === "endelection") {
         if (!isElection) {
-            await reply(interaction, language["election_already_ended"], 4)
+            console.log(languages[userLanguage]["election_already_ended"])
+            await reply(interaction, languages[userLanguage]["election_already_ended"], 4)
             return
         }
         if (!interaction.member.roles.includes('703949595297972314')) {
-            await reply(interaction, language["no_permission"], 4)
+            await reply(interaction, languages[userLanguage]["no_permission"], 4)
         }
         const scores = countVotes()
-        const channel = client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id)
         await reply(interaction, "Election ended.", 4)
         if (scores[0] === undefined) {
-            channel.send(language["no_votes"])
+            channel.send(languages[userLanguage]["no_votes"])
             fs.writeFileSync("./elections/elections.json", "{}")
             fs.truncateSync("./elections/votes.txt")
             fs.writeFileSync("./elections/isElection.json", "false")
             return
         }
-        countVotesEmbed(interaction, channel)
+        countVotesEmbed(interaction, channel, userLanguage)
         fs.writeFileSync("./elections/isElection.json", "false")
         if (scores[1]) {
             if (scores[0].count === scores[1].count) {
@@ -223,7 +277,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             channel.send("🎉 " + scores[0]['name'] + " 🎉")
         }, 3000)
         setTimeout(() => {
-            channel.send(`${language['congratulations_to']} <@${scores[0]['id']}>`)
+            channel.send(`${languages[userLanguage]['congratulations_to']} <@${scores[0]['id']}>`)
         }, 3250)
         fs.writeFileSync("./elections/elections.json", "{}")
         fs.truncateSync("./elections/votes.txt")
@@ -232,20 +286,20 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         const channel = client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id)
         const member = channel.guild.members.cache.get(interaction.member.user.id)
         if (!member.hasPermission("MANAGE_MESSAGES")) {
-            reply(interaction, language["no_permission"], 4)
+            reply(interaction, languages[userLanguage]["no_permission"], 4)
             return
         }
         if (args['amount'] > 99 || args['amount'] < 1) {
-            reply(interaction, language["within_099"], 4)
+            reply(interaction, languages[userLanguage]["within_099"], 4)
             return
         }
         channel.messages.fetch({limit: (args['amount'])}).then(messages => {
             const unpinnedMessages = messages.filter(msg => !(msg.pinned)); //A collection of messages that aren't pinned
             channel.bulkDelete(unpinnedMessages, true);
             let msgsDeleted = unpinnedMessages.array().length; // number of messages deleted
-            let e = language["messages_deleted"]
+            let e = languages[userLanguage]["messages_deleted"]
             if (msgsDeleted === 1) {
-                e = language["message_deleted"]
+                e = languages[userLanguage]["message_deleted"]
             }
             reply(interaction, msgsDeleted + ` ${e}`, 4);
         }).catch(err => {
@@ -255,7 +309,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
 })
 
 client.on('message', message => {
-    handleMessage(message, language, Discord)
+    handleMessage(message, languages, Discord)
 })
 
 client.on('error', err => {
@@ -268,10 +322,10 @@ client.on('messageReactionAdd', listener => {
 client.login(token).then(() => {
 })
 
-function countVotesEmbed(interaction, channel) {
+function countVotesEmbed(interaction, channel, userLanguage) {
     const scores = countVotes()
     const embed = new Discord.MessageEmbed()
-        .setAuthor(language["current_votes"], client.user.avatarURL())
+        .setAuthor(languages[userLanguage]["current_votes"], client.user.avatarURL())
     let string = ""
     scores.forEach(function (key) {
         string += (key["name"] + ": " + key["count"] + "\n")
