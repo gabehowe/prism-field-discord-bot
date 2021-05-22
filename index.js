@@ -1,21 +1,14 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const {initLang} = require("./src/util");
 const {loadInteraction} = require("./src/interactions");
 const {handleMessage} = require("./src/messageHandler");
 const client = new Discord.Client()
 const config = JSON.parse(fs.readFileSync("config.json"))
 const token = config['token']
 const sammyGuildId = config['sammy_guild_id']
-const languages = {}
-fs.readdir("./languages/", (err, files) => {
-    files.forEach(file => {
-        console.log()
-        fs.readFile("./languages/" + file, {encoding: "utf-8"}, (err, data) => {
-            languages[file.slice(0,file.lastIndexOf('.'))] = JSON.parse(data)
-            console.log(languages[file.slice(0,file.lastIndexOf('.'))])
-        })
-    })
-})
+let languages = initLang()
+JSON.parse(fs.readFileSync("./languages/english.json"))
 const {runYoutubeChecker} = require("./src/youtubeHandler")
 
 const getApp = (guildId) => {
@@ -117,7 +110,11 @@ client.on('ready', async () => {
         })
     }
     let array = []
-    Object.keys(languages).forEach( key => {array.push( {name:languages[key]["language_name"],value:key})})
+    Object.keys(languages).forEach(key => {
+        if (key !== 'lang') {
+            array.push({name: languages[key]["language_name"], value: key})
+        }
+    })
     await getApp(sammyGuildId).commands('845381288738816009').patch({
         data: {
             name: 'config',
@@ -140,9 +137,9 @@ client.on('ready', async () => {
             }, {name: "remove", description: "remove items from the config", type: 2},]
         }
     })
-    console.log("updating config")
     const sammyGuild = client.guilds.cache.get(sammyGuildId)
     await runYoutubeChecker(client, sammyGuild, languages["english"])
+    console.log("updating config")
 
 });
 
@@ -154,7 +151,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
     const args = {}
     let userLanguage = ''
     try {
-        userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[message.member.user.id]["language"]
+        userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[interaction.member.user.id]["language"]
     } catch (e) {
         if (e === TypeError) {
             userLanguage = "english"
@@ -223,7 +220,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             await reply(interaction, languages[userLanguage]["no_election"], 4)
             return
         }
-        await countVotesEmbed(interaction,channel,userLanguage)
+        await countVotesEmbed(interaction, channel, userLanguage)
     }
     else if (command === "startelection") {
         if (isElection) {
