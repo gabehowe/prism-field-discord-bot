@@ -8,8 +8,8 @@ function getRandomInt(min, max) {
 }
 
 function initLang() {
-    spawn('python',['../languages/updateLang.py'])
-    return JSON.parse(fs.readFileSync("./languages/lang.json"))
+    spawn('python',['languages/updateLang.py'])
+    return JSON.parse(fs.readFileSync("languages/lang.json"))
 }
 
 module.exports = {getRandomInt, initLang}

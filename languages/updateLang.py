@@ -9,8 +9,8 @@ for filename in os.listdir("../languages"):
     if filename.startswith("lang"):
         continue
 
-    with open("../languages/" + filename) as file:
+    with open("../languages/" + filename, encoding='utf-8') as file:
         jsonArray[filename[:-5]] = (json.load(file))
 
-with open("lang.json", "w+", encoding="utf-8") as lang:
+with open("lang.json", "w+", encoding='utf-8') as lang:
     lang.write(json.dumps(jsonArray))

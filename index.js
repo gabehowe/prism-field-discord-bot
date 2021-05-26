@@ -56,7 +56,6 @@ client.on('ready', async () => {
             }
         })
     }
-    //await getApp(sammyGuildId).commands('829429911185522798').delete()
     if (!commands.toString().includes("sayas")) {
         await getApp(sammyGuildId).commands.post({
             data: {
@@ -368,3 +367,6 @@ const reply = async (interaction, response) => {
         },
     })
 }
+process.on('uncaughtException', function (err){
+    console.log(err)
+})
