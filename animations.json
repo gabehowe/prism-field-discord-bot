@@ -1,0 +1,32 @@
+{
+  "owo_name_list": [
+    "owo",
+    "uuwuu",
+    "o_o",
+    "moon"
+  ],
+  "owo_frames": {
+    "owo": [
+      "OwO",
+      "UwU"
+    ],
+    "uuwuu": [
+      "OOwOO",
+      "UUwUU"
+    ],
+    "o_o": [
+      "o_o",
+      "ò_ó"
+    ],
+    "moon": [
+      ":new_moon:",
+      ":waning_crescent_moon:",
+      ":last_quarter_moon:",
+      ":waning_gibbous_moon:",
+      ":full_moon:",
+      ":waxing_gibbous_moon:",
+      ":first_quarter_moon:",
+      ":waxing_crescent_moon:"
+    ]
+  }
+}

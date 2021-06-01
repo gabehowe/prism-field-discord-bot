@@ -4,7 +4,7 @@ const {getRandomInt} = require("./util");
 function handleMessage(message,language, Discord) {
     let userLanguage = ''
     try {
-        let userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[message.member.user.id]["language"]
+        userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[message.member.user.id]["language"]
     } catch (e) {
         userLanguage = "english"
     }

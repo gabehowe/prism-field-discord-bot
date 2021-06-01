@@ -1,13 +1,13 @@
 const Discord = require('discord.js')
 const fs = require('fs')
-const {initLang} = require("./src/util");
+const util = require("./src/util");
 const {loadInteraction} = require("./src/interactions");
 const {handleMessage} = require("./src/messageHandler");
 const client = new Discord.Client()
 const config = JSON.parse(fs.readFileSync("config.json"))
 const token = config['token']
 const sammyGuildId = config['sammy_guild_id']
-let languages = initLang()
+let languages = util.initLang()
 JSON.parse(fs.readFileSync("./languages/english.json"))
 const {runYoutubeChecker} = require("./src/youtubeHandler")
 
@@ -32,6 +32,7 @@ const createAPIMessage = async (interaction, content) => {
 client.on('ready', async () => {
     console.log('Ready!');
     const commands = await getApp(sammyGuildId).commands.get()
+    fs.writeFileSync("./commands.json", JSON.stringify(commands))
     if (!commands.toString().includes("ping")) {
         await getApp(sammyGuildId).commands.post({
             data: {
@@ -136,8 +137,28 @@ client.on('ready', async () => {
             }, {name: "remove", description: "remove items from the config", type: 2},]
         }
     })
+    let animations = []
+    JSON.parse(fs.readFileSync("./animations.json"))["owo_name_list"].forEach(val => {
+        animations.push({name: val, value: val})
+    })
+    await getApp(sammyGuildId).commands('847274790360055808').patch({
+        data: {
+            name: 'animation',
+            description: "try it to find out...",
+            options: [
+                {
+                    type: 3,
+                    name: "animation",
+                    description: "animation to run",
+                    required: true,
+                    choices: animations
+                }
+            ]
+        }
+    })
     const sammyGuild = client.guilds.cache.get(sammyGuildId)
     await runYoutubeChecker(client, sammyGuild, languages["english"])
+    fs.writeFileSync("./commands.json", JSON.stringify(commands))
     console.log("updating config")
 
 });
@@ -226,7 +247,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             await reply(interaction, languages[userLanguage]["election_already_started"], 4)
             return
         }
-        if (!interaction.member.roles.includes('703949595297972314')) {
+        if (!interaction.member.roles.includes('845357914176225300')) {
             await reply(interaction, languages[userLanguage]["no_permission"], 4)
             return
         }
@@ -241,7 +262,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             await reply(interaction, languages[userLanguage]["election_already_ended"], 4)
             return
         }
-        if (!interaction.member.roles.includes('703949595297972314')) {
+        if (!interaction.member.roles.includes('845357914176225300')) {
             await reply(interaction, languages[userLanguage]["no_permission"], 4)
         }
         const scores = countVotes()
@@ -308,6 +329,48 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             reply(interaction, err, 4)
         });
     }
+    else if (command === "animation") {
+        const owoJson = JSON.parse(fs.readFileSync("./animations.json"))
+        const message = reply(interaction, owoJson["owo_frames"][options[0]["value"]][0])
+        let blinkSpeed = 100
+        let blinkInterval = 1000
+        let chance = 35
+        let currentFrame = 0
+        let doBlink = true
+        if (options[0]["value"] === "o_o") {
+            chance = 0
+            blinkSpeed = 10
+            blinkInterval = 100
+        }
+        if (options[0]["value"] === "moon") {
+            chance = 0
+            blinkInterval = 500
+            doBlink = false
+        }
+        const interval = await setInterval(() => {
+            const rand = util.getRandomInt(0, chance)
+            if (currentFrame > owoJson["owo_frames"][options[0]["value"]].length) {
+                currentFrame = 0
+            }
+            if (rand <= 10) {
+                editInteraction(interaction, owoJson["owo_frames"][options[0]["value"]][currentFrame])
+                currentFrame++
+                setTimeout(() => {
+                    if (doBlink) {
+                        if (currentFrame > owoJson["owo_frames"][options[0]["value"]].length) {
+                            currentFrame = 0
+                        }
+                        editInteraction(interaction, owoJson["owo_frames"][options[0]["value"]][currentFrame])
+                    }
+                }, blinkSpeed)
+            }
+
+        }, blinkInterval)
+        await setTimeout(() => {
+            clearInterval(interval)
+            client.api.webhooks(interaction.application_id, interaction.token).messages("@original").delete()
+        }, 60 * 1000)
+    }
 })
 
 client.on('message', message => {
@@ -367,6 +430,16 @@ const reply = async (interaction, response) => {
         },
     })
 }
-process.on('uncaughtException', function (err){
+const editInteraction = async (interaction, response) => {
+    // Set the data as embed if reponse is an embed object else as content
+    const data = typeof response === 'object' ? {embeds: [response]} : {content: response};
+    // Get the channel object by channel id:
+    const channel = await client.channels.resolve(interaction.channel_id);
+    // Edit the original interaction response:
+    client.api.webhooks(interaction.application_id, interaction.token).messages("@original").patch({
+        data
+    })
+};
+process.on('uncaughtException', function (err) {
     console.log(err)
 })
