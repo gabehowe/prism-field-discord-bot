@@ -169,14 +169,18 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
     const command = interaction.data.name.toLowerCase()
     const {name, options} = interaction.data
     const args = {}
-    let userLanguage = ''
-    try {
-        userLanguage = JSON.parse(fs.readFileSync("./user_data/user_data.json"))[interaction.member.user.id]["language"]
-    } catch (e) {
-        if (e === TypeError) {
-            userLanguage = "english"
-        }
+    let userLanguageName = ''
+    const parsedFile = JSON.parse(fs.readFileSync("./user_data/user_data.json"))
+    if (parsedFile[interaction.member.user.id] === undefined) {
+        userLanguageName = "english"
     }
+    else if (parsedFile[interaction.member.user.id]["language"] === undefined) {
+        userLanguageName = "english"
+    }
+    else {
+        userLanguageName = parsedFile[interaction.member.user.id]["language"]
+    }
+    const userLanguage = languages[userLanguageName]
     if (options) {
         for (const option of options) {
             const {name, value} = option
@@ -184,7 +188,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         }
     }
     if (command === 'ping') {
-        await reply(interaction, languages[userLanguage]["pong"], 4)
+        await reply(interaction, userLanguage["pong"], 4)
     }
     else if (command === "sayas") {
         const guild = client.guilds.cache.get(sammyGuildId)
@@ -215,11 +219,15 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
     else if (command === "vote") {
         let candidate = client.guilds.cache.get(interaction.guild_id).members.cache.get(args['candidate'])
         if (!isElection) {
-            await reply(interaction, languages[userLanguage]["no_election"], 4)
+            await reply(interaction, userLanguage["no_election"], 4)
             return
         }
         if (fs.readFileSync("./elections/votes.txt").toString().includes(interaction.member.user.id)) {
-            await reply(interaction, languages[userLanguage]["already_voted"], 4)
+            await reply(interaction, userLanguage["already_voted"], 4)
+            return
+        }
+        if (candidate.id === interaction.member.user.id) {
+            await reply(interaction, userLanguage["no_self_vote"], 4)
             return
         }
         fs.appendFile("./elections/votes.txt", interaction.member.user.id + "\n", () => {
@@ -233,48 +241,48 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         }
         fs.writeFileSync("./elections/elections.json", JSON.stringify(JSONfile))
 
-        await reply(interaction, languages[userLanguage]["vote_submitted"], 4)
+        await reply(interaction, userLanguage["vote_submitted"], 4)
     }
     else if (command === "votecount") {
         if (!isElection) {
-            await reply(interaction, languages[userLanguage]["no_election"], 4)
+            await reply(interaction, userLanguage["no_election"], 4)
             return
         }
-        await countVotesEmbed(interaction, channel, userLanguage)
+        await countVotesEmbed(interaction, channel, userLanguageName)
     }
     else if (command === "startelection") {
         if (isElection) {
-            await reply(interaction, languages[userLanguage]["election_already_started"], 4)
+            await reply(interaction, userLanguage["election_already_started"], 4)
             return
         }
         if (!interaction.member.roles.includes('845357914176225300')) {
-            await reply(interaction, languages[userLanguage]["no_permission"], 4)
+            await reply(interaction, userLanguage["no_permission"], 4)
             return
         }
         fs.writeFileSync("./elections/elections.json", "{}")
         fs.truncateSync("./elections/votes.txt")
         fs.writeFileSync("./elections/isElection.json", "true")
-        await reply(interaction, languages[userLanguage]["election_started"], 4)
+        await reply(interaction, userLanguage["election_started"], 4)
     }
     else if (command === "endelection") {
         if (!isElection) {
-            console.log(languages[userLanguage]["election_already_ended"])
-            await reply(interaction, languages[userLanguage]["election_already_ended"], 4)
+            console.log(userLanguage["election_already_ended"])
+            await reply(interaction, userLanguage["election_already_ended"], 4)
             return
         }
         if (!interaction.member.roles.includes('845357914176225300')) {
-            await reply(interaction, languages[userLanguage]["no_permission"], 4)
+            await reply(interaction, userLanguage["no_permission"], 4)
         }
         const scores = countVotes()
         await reply(interaction, "Election ended.", 4)
         if (scores[0] === undefined) {
-            channel.send(languages[userLanguage]["no_votes"])
+            channel.send(userLanguage["no_votes"])
             fs.writeFileSync("./elections/elections.json", "{}")
             fs.truncateSync("./elections/votes.txt")
             fs.writeFileSync("./elections/isElection.json", "false")
             return
         }
-        countVotesEmbed(interaction, channel, userLanguage)
+        countVotesEmbed(interaction, channel, userLanguageName)
         fs.writeFileSync("./elections/isElection.json", "false")
         if (scores[1]) {
             if (scores[0].count === scores[1].count) {
@@ -300,7 +308,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             channel.send("🎉 " + scores[0]['name'] + " 🎉")
         }, 3000)
         setTimeout(() => {
-            channel.send(`${languages[userLanguage]['congratulations_to']} <@${scores[0]['id']}>`)
+            channel.send(`${userLanguage['congratulations_to']} <@${scores[0]['id']}>`)
         }, 3250)
         fs.writeFileSync("./elections/elections.json", "{}")
         fs.truncateSync("./elections/votes.txt")
@@ -309,20 +317,20 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         const channel = client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id)
         const member = channel.guild.members.cache.get(interaction.member.user.id)
         if (!member.hasPermission("MANAGE_MESSAGES")) {
-            reply(interaction, languages[userLanguage]["no_permission"], 4)
+            reply(interaction, userLanguage["no_permission"], 4)
             return
         }
         if (args['amount'] > 99 || args['amount'] < 1) {
-            reply(interaction, languages[userLanguage]["within_099"], 4)
+            reply(interaction, userLanguage["within_099"], 4)
             return
         }
         channel.messages.fetch({limit: (args['amount'])}).then(messages => {
             const unpinnedMessages = messages.filter(msg => !(msg.pinned)); //A collection of messages that aren't pinned
             channel.bulkDelete(unpinnedMessages, true);
             let msgsDeleted = unpinnedMessages.array().length; // number of messages deleted
-            let e = languages[userLanguage]["messages_deleted"]
+            let e = userLanguage["messages_deleted"]
             if (msgsDeleted === 1) {
-                e = languages[userLanguage]["message_deleted"]
+                e = userLanguage["message_deleted"]
             }
             reply(interaction, msgsDeleted + ` ${e}`, 4);
         }).catch(err => {

@@ -1,11 +1,137 @@
 {
   "kind": "youtube#playlistItemListResponse",
-  "etag": "CDcqHbn0FoTfvO6qa1H6TodcU50",
+  "etag": "aTR7pD4Nrma4fCdJgq2GaNLiuUY",
   "nextPageToken": "CAUQAA",
   "items": [
     {
       "kind": "youtube#playlistItem",
-      "etag": "500Ww2iKO8oh1TTqik74vuYmezw",
+      "etag": "Q26TomRQJnVeheKTgQRLDGmn_BY",
+      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLkZmeXNzUDZldmFz",
+      "snippet": {
+        "publishedAt": "2021-06-22T15:40:04Z",
+        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
+        "title": "GUBBYVLOGS - How to make borber",
+        "description": "in this very exclusive episode gube makes burger\n\n\n\n\n#shorts",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/FfyssP6evas/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/FfyssP6evas/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/FfyssP6evas/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Samuel Howe",
+        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "FfyssP6evas"
+        },
+        "videoOwnerChannelTitle": "Samuel Howe",
+        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "M1E9__pAMiMGH1W7L_luq8CQN7o",
+      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLmhGYVprN3k1WU5F",
+      "snippet": {
+        "publishedAt": "2021-06-05T02:37:14Z",
+        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
+        "title": "Trying 3D for the first time",
+        "description": "3d video yay",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/hFaZk7y5YNE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/hFaZk7y5YNE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/hFaZk7y5YNE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/hFaZk7y5YNE/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/hFaZk7y5YNE/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Samuel Howe",
+        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
+        "position": 1,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "hFaZk7y5YNE"
+        },
+        "videoOwnerChannelTitle": "Samuel Howe",
+        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "PtQt4t3eSIwRxJIWkv8HzgP5-jc",
+      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLlBUeXhnaHY4UWgw",
+      "snippet": {
+        "publishedAt": "2021-06-01T22:43:50Z",
+        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
+        "title": "night drive (bmpcc4K low-light test)",
+        "description": "song: home - resonance (slowed)\ncodec: blackmagic RAW and prores 422\nresolution: 1080p60\nlens: lumix 12-66mm",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "Samuel Howe",
+        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
+        "position": 2,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "PTyxghv8Qh0"
+        },
+        "videoOwnerChannelTitle": "Samuel Howe",
+        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "o5Z5WzgVFSVzBR5-AuF59hfu2Tk",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLndRVWg1UG1xN1ZF",
       "snippet": {
         "publishedAt": "2021-05-22T01:38:41Z",
@@ -41,7 +167,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 0,
+        "position": 3,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "wQUh5Pmq7VE"
@@ -52,7 +178,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "3yYcbglVIT4knUfJva9T9oNMCIk",
+      "etag": "v_BjjrUJej_jvTGPb3-yMFcHyVk",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLmU3TlRrS0VmS3Rv",
       "snippet": {
         "publishedAt": "2021-05-16T16:41:27Z",
@@ -78,7 +204,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 1,
+        "position": 4,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "e7NTkKEfKto"
@@ -86,146 +212,10 @@
         "videoOwnerChannelTitle": "Samuel Howe",
         "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
       }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "tbLRYqcPxiw1WoIX9YXxEo4yTd0",
-      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLkNKR1JCLUpiOEp3",
-      "snippet": {
-        "publishedAt": "2021-05-10T12:22:24Z",
-        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
-        "title": "how to make a sandwich with 2 jelly?",
-        "description": "guys please send help it sent me to podel's house",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/CJGRB-Jb8Jw/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/CJGRB-Jb8Jw/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/CJGRB-Jb8Jw/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/CJGRB-Jb8Jw/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/CJGRB-Jb8Jw/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Samuel Howe",
-        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 2,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "CJGRB-Jb8Jw"
-        },
-        "videoOwnerChannelTitle": "Samuel Howe",
-        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
-      }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "w-DQLN74jCDuQZVLsYIsf9jBkik",
-      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLjBzWnA3Nnd0b19N",
-      "snippet": {
-        "publishedAt": "2021-05-10T01:35:48Z",
-        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
-        "title": "Gimbal-like stabilization from a helmet mounted camera",
-        "description": "DJI Osmo Action Rocksteady\n1080p 60fps",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/0sZp76wto_M/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/0sZp76wto_M/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/0sZp76wto_M/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/0sZp76wto_M/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/0sZp76wto_M/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Samuel Howe",
-        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 3,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "0sZp76wto_M"
-        },
-        "videoOwnerChannelTitle": "Samuel Howe",
-        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
-      }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "PSSWi5ixh2f0ALMAIIab_g5cV3U",
-      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLnQ2LU1XMl84VTlj",
-      "snippet": {
-        "publishedAt": "2021-05-05T23:09:17Z",
-        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
-        "title": "small spider trying to make it's web on my camera",
-        "description": "",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/t6-MW2_8U9c/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/t6-MW2_8U9c/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/t6-MW2_8U9c/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/t6-MW2_8U9c/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          }
-        },
-        "channelTitle": "Samuel Howe",
-        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 4,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "t6-MW2_8U9c"
-        },
-        "videoOwnerChannelTitle": "Samuel Howe",
-        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
-      }
     }
   ],
   "pageInfo": {
-    "totalResults": 50,
+    "totalResults": 53,
     "resultsPerPage": 5
   }
 }

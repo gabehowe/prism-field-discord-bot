@@ -1,5 +1,6 @@
 {
   "language_name": "English",
+  "no_self_vote": "You can't vote for yourself",
   "new_video": "New video out! Hope you all enjoy!",
   "current_votes": "Current votes",
   "pong": "pong",

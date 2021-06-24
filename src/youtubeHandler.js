@@ -52,7 +52,7 @@ async function runYoutubeChecker(client, sammyGuild, language) {
                             if (alreadyPosted) {
                                 return;
                             }
-                            client.channels.cache.get('703951319538335775').send("<@&772453735108313088>" +
+                            client.channels.cache.get('703951319538335775').send("<@&772453735108313088> " +
                                 language['new_video'] + `\n https://youtu.be/${playlistItemsArray[file]["items"][0]['snippet']["resourceId"]["videoId"]}
                 `).catch(() => {
                                 console.log("Error sending the message")

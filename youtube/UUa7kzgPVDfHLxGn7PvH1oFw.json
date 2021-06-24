@@ -1,11 +1,53 @@
 {
   "kind": "youtube#playlistItemListResponse",
-  "etag": "OQ4r5l28JSMNVK9eLOJrcAgwHQQ",
+  "etag": "7BzoBx2lim87ZiWD9EQoeCf_Yas",
   "nextPageToken": "CAUQAA",
   "items": [
     {
       "kind": "youtube#playlistItem",
-      "etag": "WcsSTFUnXJhViLcuBstdQNvQm-8",
+      "etag": "M-WFTgmLmUJmgZduczfpHHAOkAs",
+      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3Lm8yQjA3TFhKemx3",
+      "snippet": {
+        "publishedAt": "2021-06-22T03:33:37Z",
+        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
+        "title": "Weak When I Grow Up - AJR + NF Mashup",
+        "description": "NF - When I Grow Up (Someone Else Remix)\nAJR - Weak\n\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\nSocials:\nTwitch channel: bit.ly/twchprof\nInstagram: bit.ly/InstProfile\nDiscord server: https://discord.gg/EHWVQhZ\nFacebook: bit.ly/FaceProfile\nTwitter (most active) bit.ly/TwitterPr\nRoblox profile: bit.ly/RBLXpr\n\nEQUIPMENT:\n🎤Mic: amzn.to/favmic\n📁Production software: Adobe After Effects\n💻Computer: amzn.to/PCcompter\n🖥️Screen: amzn.to/widemontor\n🎙️Mic stand: bit.ly/micstandblue",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/o2B07LXJzlw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/o2B07LXJzlw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/o2B07LXJzlw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/o2B07LXJzlw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "PrisMusic",
+        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "o2B07LXJzlw"
+        },
+        "videoOwnerChannelTitle": "PrisMusic",
+        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "iSx8WR24ZGJRaiTL_-SyN88M0e0",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LmExakYwSTBDWFE4",
       "snippet": {
         "publishedAt": "2021-05-24T00:37:30Z",
@@ -41,7 +83,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 0,
+        "position": 1,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "a1jF0I0CXQ8"
@@ -52,7 +94,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "lGDIrAd1FYOdkzL6ZobShSYkrIQ",
+      "etag": "x6Jk1NLpfMFoN7CH_MuqsQAEc1M",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkNsRmc1U2IxLUZN",
       "snippet": {
         "publishedAt": "2021-05-14T19:56:29Z",
@@ -88,7 +130,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 1,
+        "position": 2,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "ClFg5Sb1-FM"
@@ -99,7 +141,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "jcQZahk839g3jKtrQHXqf_uWFQc",
+      "etag": "n4e50G9XE6jqSDPSz92UWzCHl5U",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkVYSnVkVktjRGd3",
       "snippet": {
         "publishedAt": "2021-05-03T19:25:13Z",
@@ -130,7 +172,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 2,
+        "position": 3,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "EXJudVKcDgw"
@@ -141,7 +183,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "AkOMFxJ4b9kRyeKGodz3sMJk7GM",
+      "etag": "iABTdXDNrKgTGqhSxeeaMztuMDI",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3Lm1JcE1nV3VhUTQ0",
       "snippet": {
         "publishedAt": "2021-04-27T19:40:51Z",
@@ -177,7 +219,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 3,
+        "position": 4,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "mIpMgWuaQ44"
@@ -185,57 +227,10 @@
         "videoOwnerChannelTitle": "PrisMusic",
         "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
       }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "ODUqj3EuClZkodnOuPOkZn1y4tI",
-      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkFDOU5ENUtFQlRZ",
-      "snippet": {
-        "publishedAt": "2021-04-22T13:55:42Z",
-        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
-        "title": "Cowbell Cowboy (10HZ BASS TEST)",
-        "description": "lmao the name is so cleche sorry about that\nand sorry for your speakers 😉\n\nLyrics: \nSomeone just stepped on my dog\nNow I feel like I'm in fog\nI'm going back to 505\nit's either that or it's the knife\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\nSocials:\nTwitch channel: bit.ly/twchprof\nInstagram: bit.ly/InstProfile\nDiscord server: https://discord.gg/EHWVQhZ\nFacebook: bit.ly/FaceProfile\nTwitter (most active) bit.ly/TwitterPr\nRoblox profile: bit.ly/RBLXpr\n\nEQUIPMENT:\n🎤Mic: amzn.to/favmic\n📁Production software: Adobe After Effects\n💻Computer: amzn.to/PCcompter\n🖥️Screen: amzn.to/widemontor\n🎙️Mic stand: bit.ly/micstandblue",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/AC9ND5KEBTY/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "PrisMusic",
-        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 4,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "AC9ND5KEBTY"
-        },
-        "videoOwnerChannelTitle": "PrisMusic",
-        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
-      }
     }
   ],
   "pageInfo": {
-    "totalResults": 69,
+    "totalResults": 70,
     "resultsPerPage": 5
   }
 }
