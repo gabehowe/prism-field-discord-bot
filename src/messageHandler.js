@@ -42,15 +42,13 @@ function handleMessage(message,language, Discord) {
             "** **\n" +
             "**5.** As long as it pertains to the current discussion, gifs/memes in <#470999786703552514> are okay. (Note: you have to have the <@&718097534710710428> role or higher to post media in general)\n" +
             "** **\n" +
-            "**6.** \"Ghost Chatting\" (saying something and then deleting it repeatedly) is prohibited, as it's very annoying and puts people out of the conversation.\n" +
+            "**6.** If people wish to keep their real names private, respect their decision and refer to them by their username instead.\n" +
             "** **\n" +
-            "**7.** If people wish to keep their real names private, respect their decision and refer to them by their username instead.\n" +
+            "**7.** \"Chainposting\" (sending multiple messages that may be considered spam) is ok, just know where to end it.\n" +
             "** **\n" +
-            "**8.** \"Chainposting\" (sending multiple messages that may be considered spam) is ok, just know where to end it.\n" +
+            "**8.** Getting warned/muted 3 times results in a ban.\n" +
             "** **\n" +
-            "**9.** Getting warned/muted 3 times results in a ban.\n" +
-            "** **\n" +
-            "**10.** Bot commands are only for <#765209868805472256>")
+            "**9.** Bot commands are only for <#765209868805472256>")
             .then(() => {
             })
     }

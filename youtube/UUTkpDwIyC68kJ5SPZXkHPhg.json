@@ -1,11 +1,48 @@
 {
   "kind": "youtube#playlistItemListResponse",
-  "etag": "aTR7pD4Nrma4fCdJgq2GaNLiuUY",
+  "etag": "9g8jvXPWUnbSx3pyVJXRDsnpfIA",
   "nextPageToken": "CAUQAA",
   "items": [
     {
       "kind": "youtube#playlistItem",
-      "etag": "Q26TomRQJnVeheKTgQRLDGmn_BY",
+      "etag": "NtWskCMWPbOd8QfEoDqoWTLCgQ4",
+      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLnRucjk5MzkxUVA4",
+      "snippet": {
+        "publishedAt": "2021-06-30T17:35:11Z",
+        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
+        "title": "shaved ice 🍨",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/tnr99391QP8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/tnr99391QP8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/tnr99391QP8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Samuel Howe",
+        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "tnr99391QP8"
+        },
+        "videoOwnerChannelTitle": "Samuel Howe",
+        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "UB8PhkQvomutRXPwN1qUmCZdZTU",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLkZmeXNzUDZldmFz",
       "snippet": {
         "publishedAt": "2021-06-22T15:40:04Z",
@@ -31,7 +68,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 0,
+        "position": 1,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "FfyssP6evas"
@@ -42,7 +79,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "M1E9__pAMiMGH1W7L_luq8CQN7o",
+      "etag": "mTEDC4Cz5epWyHCtwPAqQwpkUIc",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLmhGYVprN3k1WU5F",
       "snippet": {
         "publishedAt": "2021-06-05T02:37:14Z",
@@ -78,7 +115,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 1,
+        "position": 2,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "hFaZk7y5YNE"
@@ -89,7 +126,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "PtQt4t3eSIwRxJIWkv8HzgP5-jc",
+      "etag": "WgV_YTyAbxZm9JyVwKhFx-rFV58",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLlBUeXhnaHY4UWgw",
       "snippet": {
         "publishedAt": "2021-06-01T22:43:50Z",
@@ -120,7 +157,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 2,
+        "position": 3,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "PTyxghv8Qh0"
@@ -131,7 +168,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "o5Z5WzgVFSVzBR5-AuF59hfu2Tk",
+      "etag": "OGvQagu8eDyVPhy-6V41rRUcfRs",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLndRVWg1UG1xN1ZF",
       "snippet": {
         "publishedAt": "2021-05-22T01:38:41Z",
@@ -167,7 +204,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 3,
+        "position": 4,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "wQUh5Pmq7VE"
@@ -175,47 +212,10 @@
         "videoOwnerChannelTitle": "Samuel Howe",
         "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
       }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "v_BjjrUJej_jvTGPb3-yMFcHyVk",
-      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLmU3TlRrS0VmS3Rv",
-      "snippet": {
-        "publishedAt": "2021-05-16T16:41:27Z",
-        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
-        "title": "local boy dies of laughter over birthday present video",
-        "description": "tysm guys from the bottom of my heart ily",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/e7NTkKEfKto/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/e7NTkKEfKto/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/e7NTkKEfKto/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          }
-        },
-        "channelTitle": "Samuel Howe",
-        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 4,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "e7NTkKEfKto"
-        },
-        "videoOwnerChannelTitle": "Samuel Howe",
-        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
-      }
     }
   ],
   "pageInfo": {
-    "totalResults": 53,
+    "totalResults": 54,
     "resultsPerPage": 5
   }
 }
