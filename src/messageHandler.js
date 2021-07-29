@@ -73,5 +73,11 @@ function handleMessage(message,language, Discord) {
             "** **\n" +
             "For any questions or concerns, go to <#719895040767295559>")
     }
+    else if ((command.includes('owo') || command.includes('uwu')) && !(message.guild.member(408785106942164992))) {
+        const rand = getRandomInt(0,9)
+        if (rand === 0) {
+            message.channel.send(language[userLanguage]["no_owo"])
+        }
+    }
 }
 module.exports = {handleMessage}

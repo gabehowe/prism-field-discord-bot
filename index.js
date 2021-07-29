@@ -1,15 +1,23 @@
 const Discord = require('discord.js')
 const fs = require('fs')
 const util = require("./src/util");
+const {CommandInteraction} = require("discord.js");
 const {loadInteraction} = require("./src/interactions");
 const {handleMessage} = require("./src/messageHandler");
-const client = new Discord.Client()
+const client = new Discord.Client({
+    intents: ['GUILD_MEMBERS', 'GUILD_MESSAGES', "GUILD_MESSAGE_TYPING", "GUILD_MESSAGE_REACTIONS",],
+    fetchAllMembers: true,
+    partials: ['MESSAGE', "CHANNEL", "GUILD_MEMBER", "REACTION", "USER"]
+})
 const config = JSON.parse(fs.readFileSync("config.json"))
 const token = config['token']
 const sammyGuildId = config['sammy_guild_id']
+const childProcess = require("child_process")
+const {v4: uuidv4} = require('uuid')
 let languages = util.initLang()
 JSON.parse(fs.readFileSync("./languages/english.json"))
 const {runYoutubeChecker} = require("./src/youtubeHandler")
+
 
 const getApp = (guildId) => {
     const app = client.api.applications(client.user.id)
@@ -23,13 +31,19 @@ const createAPIMessage = async (interaction, content) => {
         client.channels.resolve(interaction.channel_id),
         content
     )
-        .resolveData()
-        .resolveFiles()
+                                       .resolveData()
+                                       .resolveFiles()
 
     return {...data, files}
 }
 
 client.on('ready', async () => {
+    const mazes = fs.readdirSync("C:\\Users\\gabri\\dev\\Discord\\pism-discorp-bot\\mazes\\")
+    mazes.forEach(maze => {
+        if (maze.endsWith("png")) {
+            fs.unlinkSync(`C:\\Users\\gabri\\dev\\Discord\\pism-discorp-bot\\mazes\\${maze}`)
+        }
+    })
     console.log('Ready!');
     const commands = await getApp(sammyGuildId).commands.get()
     fs.writeFileSync("./commands.json", JSON.stringify(commands))
@@ -39,6 +53,26 @@ client.on('ready', async () => {
                 name: 'ping',
                 description: 'you mums a guy',
             },
+        })
+    }
+    if (!getApp().commands.get().toString().includes("maze")) {
+        await getApp().commands.post({
+            data: {
+                name: "maze",
+                description: "creates a maze with the given proportions",
+                options: [{
+                    name: 'width',
+                    description: 'the width of the maze',
+                    required: true,
+                    type: 4,
+                },
+                    {
+                        name: 'height',
+                        description: 'the height of the maze',
+                        required: true,
+                        type: 4,
+                    }]
+            }
         })
     }
     if (!commands.toString().includes("purge")) {
@@ -109,6 +143,7 @@ client.on('ready', async () => {
             }
         })
     }
+    let map = {}
     let array = []
     Object.keys(languages).forEach(key => {
         if (key !== 'lang') {
@@ -162,7 +197,45 @@ client.on('ready', async () => {
     console.log("updating config")
 
 });
+client.on('interactionCreate', interaction => {
 
+    if (interaction.isCommand()) {
+        if (interaction.commandName === 'maze') {
+            try {
+                const uuid = uuidv4()
+                const {value: width} = interaction.options.get('width')
+                const {value: height} = interaction.options.get('height')
+                if (width < 10 || height < 10) {
+                    interaction.reply("dimensions must be >= 10")
+                    return;
+                }
+                if (width > 501 || height > 501) {
+                    interaction.reply("dimensions must be <= 500")
+                    return
+                }
+                let timeout = (width * height > (250 * 250)) ? ((width * height)/45)*4 : 5000
+                if (timeout < 5000) timeout = 5000
+                console.log([height, width])
+                childProcess.spawn('python', [`./mazes/maze-generation.py`, '--name', uuid, '--width', width, '--height', height])
+                setTimeout(() => {
+                    if (!fs.existsSync(`C:\\Users\\gabri\\dev\\Discord\\pism-discorp-bot\\mazes\\${uuid}.png`)) {
+                        interaction.editReply("There was an error creating your maze. (Probably took too long)")
+                        return
+                    }
+                    interaction.editReply({
+                        files: [{
+                            attachment: `C:\\Users\\gabri\\dev\\Discord\\pism-discorp-bot\\mazes\\${uuid}.png`,
+                            name: 'maze.png',
+                        }]
+                    }).catch()
+                }, timeout)
+            } catch (e) {
+                interaction.editReply(interaction, "There was an error creating your maze.")
+            }
+            interaction.defer()
+        }
+    }
+})
 client.ws.on('INTERACTION_CREATE', async (interaction) => {
     const isElection = JSON.parse(fs.readFileSync("./elections/isElection.json"))
     const channel = client.channels.cache.get(interaction.channel_id)
@@ -171,6 +244,9 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
     const args = {}
     let userLanguageName = ''
     const parsedFile = JSON.parse(fs.readFileSync("./user_data/user_data.json"))
+    if (interaction.member === undefined) {
+        return
+    }
     if (parsedFile[interaction.member.user.id] === undefined) {
         userLanguageName = "english"
     }
@@ -187,6 +263,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
             args[name] = value
         }
     }
+
     if (command === 'ping') {
         await reply(interaction, userLanguage["pong"], 4)
     }

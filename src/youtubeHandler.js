@@ -4,13 +4,12 @@ let playlistItemsArray = {}
 let latestVids = {}
 
 function reloadYTDir() {
-    fs.readdir("./youtube/", (err, files) => {
-        files.forEach(file => {
-            if (!file.endsWith(".json")) return;
-            fs.readFile(`./youtube/${file}`, {encoding: 'utf-8'}, (err, data) => {
-                playlistItemsArray[file] = JSON.parse(data)
-                latestVids[file] = JSON.parse(data)["items"][0]
-            })
+    const files = fs.readdirSync("C:\\Users\\gabri\\dev\\Discord\\pism-discorp-bot\\youtube\\")
+    files.forEach(file => {
+        if (!file.endsWith(".json")) return;
+        fs.readFile(`./youtube/${file}`, {encoding: 'utf-8'}, (err, data) => {
+            playlistItemsArray[file] = JSON.parse(data)
+            latestVids[file] = JSON.parse(data)["items"][0]
         })
     })
 }
@@ -24,14 +23,15 @@ async function runYoutubeChecker(client, sammyGuild, language) {
     reloadYTDir()
     setInterval(() => {
         updateJSON()
-        fs.readdir("./youtube/", (err, files) => {
-            files.forEach(file => {
-                if (!file.endsWith(".json")) return;
-                fs.readFile(`./youtube/${file}`, {encoding: 'utf-8'}, (err, data) => {
-                        playlistItemsArray[file] = JSON.parse(data)
-                        if (playlistItemsArray[file]["items"] === undefined) {
-                            return;
-                        }
+        const files = fs.readdirSync("C:\\Users\\gabri\\dev\\Discord\\pism-discorp-bot\\youtube\\")
+        files.forEach(file => {
+            if (!file.endsWith(".json")) return;
+            fs.readFile(`./youtube/${file}`, {encoding: 'utf-8'}, (err, data) => {
+                    playlistItemsArray[file] = JSON.parse(data)
+                    if (playlistItemsArray[file]["items"] === undefined) {
+                        return;
+                    }
+                    try {
                         if (playlistItemsArray[file]["items"][0]['snippet']['resourceId']["videoId"] !== latestVids[file]['snippet']['resourceId']["videoId"]) {
                             console.log("new vid")
                             if (sammyGuild === undefined) {
@@ -58,14 +58,16 @@ async function runYoutubeChecker(client, sammyGuild, language) {
                                 console.log("Error sending the message")
                             })
                         }
-
-                        latestVids[file] = playlistItemsArray[file]["items"][0]
-
+                    } catch (e) {
+                        console.log("smth boofed")
                     }
-                )
-            })
+
+                    latestVids[file] = playlistItemsArray[file]["items"][0]
+
+                }
+            )
         })
-    }, 30 * 1000)
+    }, 60 * 1000)
 }
 
 module.exports = {runYoutubeChecker, reloadYTDir}

@@ -1,11 +1,53 @@
 {
   "kind": "youtube#playlistItemListResponse",
-  "etag": "7BzoBx2lim87ZiWD9EQoeCf_Yas",
+  "etag": "3u--DhT2-6wdpjbUyBnsc0_p1TM",
   "nextPageToken": "CAUQAA",
   "items": [
     {
       "kind": "youtube#playlistItem",
-      "etag": "M-WFTgmLmUJmgZduczfpHHAOkAs",
+      "etag": "40gD53HjKceJ2VeMy2QPj3vJHt0",
+      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LmtaSUM3Zkx2Zi1r",
+      "snippet": {
+        "publishedAt": "2021-07-26T20:33:08Z",
+        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
+        "title": "Devotion - One True God",
+        "description": "Wohoo this was fun\nProbably my most overall technical visualizer so far :D\n\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\n\nLinks:\nMERCH STORE (dumb, but useable): https://prismerch.creator-spring.com/?\nDISCORD (please join): https://discord.gg/t9aU7z7Jw9",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/kZIC7fLvf-k/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/kZIC7fLvf-k/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/kZIC7fLvf-k/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/kZIC7fLvf-k/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "PrisMusic",
+        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "kZIC7fLvf-k"
+        },
+        "videoOwnerChannelTitle": "PrisMusic",
+        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "rxXdQHoYsGMWhN3Xm_i1qkZ4w6E",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3Lm8yQjA3TFhKemx3",
       "snippet": {
         "publishedAt": "2021-06-22T03:33:37Z",
@@ -36,7 +78,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 0,
+        "position": 1,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "o2B07LXJzlw"
@@ -47,7 +89,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "iSx8WR24ZGJRaiTL_-SyN88M0e0",
+      "etag": "3_wQ5IJd7BQn-qe776n5_XEl6n8",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LmExakYwSTBDWFE4",
       "snippet": {
         "publishedAt": "2021-05-24T00:37:30Z",
@@ -83,7 +125,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 1,
+        "position": 2,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "a1jF0I0CXQ8"
@@ -94,7 +136,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "x6Jk1NLpfMFoN7CH_MuqsQAEc1M",
+      "etag": "by61qQPpTX33w7S5lCDeypEjNwQ",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkNsRmc1U2IxLUZN",
       "snippet": {
         "publishedAt": "2021-05-14T19:56:29Z",
@@ -130,7 +172,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 2,
+        "position": 3,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "ClFg5Sb1-FM"
@@ -141,7 +183,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "n4e50G9XE6jqSDPSz92UWzCHl5U",
+      "etag": "klaet5L4Ev-yweRlP2pH3mJG2t4",
       "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3LkVYSnVkVktjRGd3",
       "snippet": {
         "publishedAt": "2021-05-03T19:25:13Z",
@@ -172,7 +214,7 @@
         },
         "channelTitle": "PrisMusic",
         "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 3,
+        "position": 4,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "EXJudVKcDgw"
@@ -180,57 +222,10 @@
         "videoOwnerChannelTitle": "PrisMusic",
         "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
       }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "iABTdXDNrKgTGqhSxeeaMztuMDI",
-      "id": "VVVhN2t6Z1BWRGZITHhHbjdQdkgxb0Z3Lm1JcE1nV3VhUTQ0",
-      "snippet": {
-        "publishedAt": "2021-04-27T19:40:51Z",
-        "channelId": "UCa7kzgPVDfHLxGn7PvH1oFw",
-        "title": "009 Soundsystem - Dreamscape (Lizdek Trap Remix)",
-        "description": "Ahhh, the nostalgia\nHope I nailed the vibe down!\nWatch in Fullscreen for the best experience!\n\n⚠️[PHOTOSENSITIVE EPILEPSY WARNING]⚠️\nThis video contains flashing lights and colors.\n\nThanks for watching!\nPlease like the video and subscribe for more!\nSocials:\nTwitch channel: bit.ly/twchprof\nInstagram: bit.ly/InstProfile\nDiscord server: https://discord.gg/EHWVQhZ\nFacebook: bit.ly/FaceProfile\nTwitter (most active) bit.ly/TwitterPr\nRoblox profile: bit.ly/RBLXpr\n\nEQUIPMENT:\n🎤Mic: amzn.to/favmic\n📁Production software: Adobe After Effects\n💻Computer: amzn.to/PCcompter\n🖥️Screen: amzn.to/widemontor\n🎙️Mic stand: bit.ly/micstandblue",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/mIpMgWuaQ44/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "PrisMusic",
-        "playlistId": "UUa7kzgPVDfHLxGn7PvH1oFw",
-        "position": 4,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "mIpMgWuaQ44"
-        },
-        "videoOwnerChannelTitle": "PrisMusic",
-        "videoOwnerChannelId": "UCa7kzgPVDfHLxGn7PvH1oFw"
-      }
     }
   ],
   "pageInfo": {
-    "totalResults": 70,
+    "totalResults": 71,
     "resultsPerPage": 5
   }
 }

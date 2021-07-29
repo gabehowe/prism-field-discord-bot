@@ -1,11 +1,100 @@
 {
   "kind": "youtube#playlistItemListResponse",
-  "etag": "9g8jvXPWUnbSx3pyVJXRDsnpfIA",
+  "etag": "J8SvjuT7R0gtT0Th37_1Hdit3ZY",
   "nextPageToken": "CAUQAA",
   "items": [
     {
       "kind": "youtube#playlistItem",
-      "etag": "NtWskCMWPbOd8QfEoDqoWTLCgQ4",
+      "etag": "437uVqw5mtiPkb7pFNpHm9Kmpi8",
+      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLnVkaC1wMV9LUnpj",
+      "snippet": {
+        "publishedAt": "2021-07-25T02:19:17Z",
+        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
+        "title": "BMPCC4K with Lumix 12-60MM Zoom [4K]",
+        "description": "Thanks for watching!\nI filmed a little bit of our trip to Utah for some grading practice :)\nEvery clip except the last two was graded in Resolve Studio 17.\n\nSource Footage: 4K DCI 2.4:1 75fps Film Gen 5\nExported Video: 4K UHD 30fps",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/udh-p1_KRzc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/udh-p1_KRzc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/udh-p1_KRzc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/udh-p1_KRzc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/udh-p1_KRzc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Samuel Howe",
+        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "udh-p1_KRzc"
+        },
+        "videoOwnerChannelTitle": "Samuel Howe",
+        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "NMrQxxw2YBWY4NqqIMfb6PWueHE",
+      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLk9vQlhaNThhVG5Z",
+      "snippet": {
+        "publishedAt": "2021-07-20T19:26:05Z",
+        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
+        "title": "Abandoned Mine Shaft Exploration",
+        "description": "Thanks for watching!\n\nMain channel: https://www.youtube.com/AntiPrismVlogs\nDiscord: https://discord.gg/t9aU7z7Jw9\n\n(this may or may not be a reupload due to a grammatical error sorry)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/OoBXZ58aTnY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/OoBXZ58aTnY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/OoBXZ58aTnY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/OoBXZ58aTnY/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "Samuel Howe",
+        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
+        "position": 1,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "OoBXZ58aTnY"
+        },
+        "videoOwnerChannelTitle": "Samuel Howe",
+        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "tcruUscQGGdun7uLEuyGAiqgxbc",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLnRucjk5MzkxUVA4",
       "snippet": {
         "publishedAt": "2021-06-30T17:35:11Z",
@@ -31,7 +120,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 0,
+        "position": 2,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "tnr99391QP8"
@@ -42,7 +131,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "UB8PhkQvomutRXPwN1qUmCZdZTU",
+      "etag": "TgnyoXapP-2gFija3UJXZKHvzy4",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLkZmeXNzUDZldmFz",
       "snippet": {
         "publishedAt": "2021-06-22T15:40:04Z",
@@ -68,7 +157,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 1,
+        "position": 3,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "FfyssP6evas"
@@ -79,7 +168,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "mTEDC4Cz5epWyHCtwPAqQwpkUIc",
+      "etag": "tL7j3ALCuFH228mCPyHzd0KEaUk",
       "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLmhGYVprN3k1WU5F",
       "snippet": {
         "publishedAt": "2021-06-05T02:37:14Z",
@@ -115,7 +204,7 @@
         },
         "channelTitle": "Samuel Howe",
         "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 2,
+        "position": 4,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "hFaZk7y5YNE"
@@ -123,99 +212,10 @@
         "videoOwnerChannelTitle": "Samuel Howe",
         "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
       }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "WgV_YTyAbxZm9JyVwKhFx-rFV58",
-      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLlBUeXhnaHY4UWgw",
-      "snippet": {
-        "publishedAt": "2021-06-01T22:43:50Z",
-        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
-        "title": "night drive (bmpcc4K low-light test)",
-        "description": "song: home - resonance (slowed)\ncodec: blackmagic RAW and prores 422\nresolution: 1080p60\nlens: lumix 12-66mm",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/PTyxghv8Qh0/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          }
-        },
-        "channelTitle": "Samuel Howe",
-        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 3,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "PTyxghv8Qh0"
-        },
-        "videoOwnerChannelTitle": "Samuel Howe",
-        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
-      }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "OGvQagu8eDyVPhy-6V41rRUcfRs",
-      "id": "VVVUa3BEd0l5QzY4a0o1U1BaWGtIUGhnLndRVWg1UG1xN1ZF",
-      "snippet": {
-        "publishedAt": "2021-05-22T01:38:41Z",
-        "channelId": "UCTkpDwIyC68kJ5SPZXkHPhg",
-        "title": "take that prismusic",
-        "description": "I Can't Wait - Droeloe",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/wQUh5Pmq7VE/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/wQUh5Pmq7VE/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/wQUh5Pmq7VE/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/wQUh5Pmq7VE/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/wQUh5Pmq7VE/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Samuel Howe",
-        "playlistId": "UUTkpDwIyC68kJ5SPZXkHPhg",
-        "position": 4,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "wQUh5Pmq7VE"
-        },
-        "videoOwnerChannelTitle": "Samuel Howe",
-        "videoOwnerChannelId": "UCTkpDwIyC68kJ5SPZXkHPhg"
-      }
     }
   ],
   "pageInfo": {
-    "totalResults": 54,
+    "totalResults": 56,
     "resultsPerPage": 5
   }
 }

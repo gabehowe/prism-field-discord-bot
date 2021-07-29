@@ -1,14 +1,51 @@
 {
   "kind": "youtube#playlistItemListResponse",
-  "etag": "fcMrhIAOMYG33FpjCAy_t2W6ec4",
+  "etag": "sdPnLEwk6h8ercznQv3udVa6cJ4",
   "nextPageToken": "CAUQAA",
   "items": [
     {
       "kind": "youtube#playlistItem",
-      "etag": "NerW9_u4pI0-rINFxBOYl_lfwOI",
+      "etag": "i56mRQ8GUVrfQib0HlaCNhAxd24",
+      "id": "VVVsbUdYcFhRbkY1UDdoM1l4Y1lsX3dRLkpVMzhxSjJUYXo0",
+      "snippet": {
+        "publishedAt": "2021-07-23T17:10:42Z",
+        "channelId": "UClmGXpXQnF5P7h3YxcYl_wQ",
+        "title": "crushing minecraft steve into oblivion with online video converters",
+        "description": "It's possible!\n\nDylan Locke's remix of \"Creeper? Aww man...\": https://bit.ly/3BzkyGF\nSurreal Entertainment's video: https://bit.ly/3eOpDRQ\n\nThanks for watching!\nPlease like the video and subscribe for more!\n\nLinks:\nMERCH STORE (dumb, but useable): https://teespring.com/en-GB/stores/prismerch\nDISCORD (please join): https://discord.gg/t9aU7z7Jw9\n\nEQUIPMENT:\nMain Camera: BMPCC4K\nPhotography Camera: Canon EOS 60D\nB camera: Sony HDR-CX405\n\nOutro Song: Intro - Armageddon Miyers \nhaha yes, I know the outro song is called intro lol",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/JU38qJ2Taz4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/JU38qJ2Taz4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/JU38qJ2Taz4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "AntiPrism Vlogs",
+        "playlistId": "UUlmGXpXQnF5P7h3YxcYl_wQ",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "JU38qJ2Taz4"
+        },
+        "videoOwnerChannelTitle": "AntiPrism Vlogs",
+        "videoOwnerChannelId": "UClmGXpXQnF5P7h3YxcYl_wQ"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "IqLMsNu9VCrVt4VO-bwnyOGZEiQ",
       "id": "VVVsbUdYcFhRbkY1UDdoM1l4Y1lsX3dRLkxsdlc1a0NBR0Jj",
       "snippet": {
-        "publishedAt": "2021-07-03T18:37:26Z",
+        "publishedAt": "2021-07-03T17:14:10Z",
         "channelId": "UClmGXpXQnF5P7h3YxcYl_wQ",
         "title": "1 YEAR BASEMENT TO THEATER ROOM TRANSFORMATION | KEF, PremierAccoustic, Dolby Atmos, Denon",
         "description": "USE CHAPTERS \n\nThis has been something I can only describe as an adventure. I'm so glad I can finally release this.\n\nThis video is not sponsored in any way.\n\nEpson 5050UB Projector Review: https://bit.ly/3jN10Ia\nGovee RGB Strip Lights Review: https://bit.ly/3ApxoGK\n\nLinks (NOT AFFILIATE):\nKEF: https://us.kef.com/\nPremierAccoustic: (no socials???)\nDolby: https://www.dolby.com/\nNvidia: https://www.nvidia.com/en-us/\n\n\nThanks for watching!\nPlease like the video and subscribe for more!\n\nLinks:\nMERCH STORE (dumb, but useable): https://teespring.com/en-GB/stores/prismerch\nDISCORD (please join): https://discord.gg/t9aU7z7Jw9\n\nEQUIPMENT:\nMain Camera: BMPCC4K\nPhotography Camera: Canon EOS 60D\nB camera: Sony HDR-CX405\n\nOutro Song: Intro - Armageddon Miyers \nhaha yes, I know the outro song is called intro lol\n\nTIMESTAMPS:\n00:00 Intro\n00:49 Workbench Removal\n02:44 Building the Ceiling Brace\n02:54 Going to the store\n03:49 Testing the Rear KEF speakers\n05:47 Recap 1 and Goals\n07:23 PremierAccoustic Subwoofer Demo\n09:27 Atmos Speaker unboxing\n11:39 Atmos Speaker Demo \n12:38 Cutting Plywood for the Soffit and Ceiling\n13:09 Old Subwoofer/KEF speaker test\n14:04 Recap 2 and Goals\n14:47 Installing Wall drywall and In-Wall Wires\n15:01 Testing the LED's \"Dance\" function\n15:34 Installing Wall drywall pt 2\n16:20 Installing the Ceiling Drywall\n16:44 Making Holes for the Atmos speakers\n16:58 Recap 3 and Goals\n17:44 Tangent :\\\n18:18 I look and sound like an idiot\n18:20 Time machine\n18:24 Recap 4, Goals and Projector Test\n28:28 Recap 5 and Post-Paint LED demo\n22:14 Note (READ FAST)\n22:19 Audio Demo with Takstar mic\n23:38 Recap 5 and Goals\n24:49 Finishing the Stairwell Room\n24:59 Pre-Carpet info and recap\n26:59 The long-awaited carpet timelapse\n27:19 walking shot (honestly idk why I put this in)\n27:25 Before and After Carpet\n27:40 Carpet Reaction \n28:50 Trim Reaction & Final Remarks\n29:27 Outro",
@@ -31,7 +68,7 @@
         },
         "channelTitle": "AntiPrism Vlogs",
         "playlistId": "UUlmGXpXQnF5P7h3YxcYl_wQ",
-        "position": 0,
+        "position": 1,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "LlvW5kCAGBc"
@@ -42,7 +79,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "qxPAZeXuROm2RzKDQWNU2ZF_hNc",
+      "etag": "9yRqBf-MCeiwwz_r6f-pA8kFp6A",
       "id": "VVVsbUdYcFhRbkY1UDdoM1l4Y1lsX3dRLnp5MVpnZzlYU1Yw",
       "snippet": {
         "publishedAt": "2021-06-22T21:20:18Z",
@@ -68,7 +105,7 @@
         },
         "channelTitle": "AntiPrism Vlogs",
         "playlistId": "UUlmGXpXQnF5P7h3YxcYl_wQ",
-        "position": 1,
+        "position": 2,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "zy1Zgg9XSV0"
@@ -79,7 +116,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "GK5N6C1IJmQ4oozTNRtSpLiiCzY",
+      "etag": "DHCU-ilry2VYru9Pj3OhL0t5PsA",
       "id": "VVVsbUdYcFhRbkY1UDdoM1l4Y1lsX3dRLlkxTE83aWRLRzdJ",
       "snippet": {
         "publishedAt": "2021-06-12T17:13:52Z",
@@ -115,7 +152,7 @@
         },
         "channelTitle": "AntiPrism Vlogs",
         "playlistId": "UUlmGXpXQnF5P7h3YxcYl_wQ",
-        "position": 2,
+        "position": 3,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "Y1LO7idKG7I"
@@ -126,7 +163,7 @@
     },
     {
       "kind": "youtube#playlistItem",
-      "etag": "XzzdNlAbyfEnZDxiHnIggGiySwI",
+      "etag": "zkKIjv0zNegi9zXl76uYo3Td4IA",
       "id": "VVVsbUdYcFhRbkY1UDdoM1l4Y1lsX3dRLjh6LVBJSl9lcGpJ",
       "snippet": {
         "publishedAt": "2021-06-08T17:54:34Z",
@@ -162,7 +199,7 @@
         },
         "channelTitle": "AntiPrism Vlogs",
         "playlistId": "UUlmGXpXQnF5P7h3YxcYl_wQ",
-        "position": 3,
+        "position": 4,
         "resourceId": {
           "kind": "youtube#video",
           "videoId": "8z-PIJ_epjI"
@@ -170,57 +207,10 @@
         "videoOwnerChannelTitle": "AntiPrism Vlogs",
         "videoOwnerChannelId": "UClmGXpXQnF5P7h3YxcYl_wQ"
       }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "eXGrKZXUIAMkJRq58CJVmubxytg",
-      "id": "VVVsbUdYcFhRbkY1UDdoM1l4Y1lsX3dRLmEwdkdRSWlFWUxN",
-      "snippet": {
-        "publishedAt": "2021-05-19T23:35:21Z",
-        "channelId": "UClmGXpXQnF5P7h3YxcYl_wQ",
-        "title": "I'm 16 and just got a phone",
-        "description": "Hopefully it's not completely downhill from here 🤕\nREAD THE TIMESTAMPS IN THE VIDEO FOR MORE INFO\n\n\nThanks for watching!\nPlease like the video and subscribe for more!\n\nLinks:\nMERCH STORE (dumb, but useable): https://teespring.com/en-GB/stores/prismerch\nDISCORD (please join): https://discord.gg/t9aU7z7Jw9\n\nTimestamps:\n0:00 Too heavy\n0:32 No SIM card. What's that?\n0:50 Screen protector problems\n1:06 Autocorrect? Never beard of it.\n1:24 My phone's little cocoon\n\n\n\nEQUIPMENT:\nMain Camera: BMPCC4K\nPhotography Camera: Canon EOS 60D\nB camera: Sony HDR-CX405\n\nOutro Song: Intro - Armageddon Miyers \nhaha yes, I know the outro song is called intro lol",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/a0vGQIiEYLM/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/a0vGQIiEYLM/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/a0vGQIiEYLM/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/a0vGQIiEYLM/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/a0vGQIiEYLM/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "AntiPrism Vlogs",
-        "playlistId": "UUlmGXpXQnF5P7h3YxcYl_wQ",
-        "position": 4,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "a0vGQIiEYLM"
-        },
-        "videoOwnerChannelTitle": "AntiPrism Vlogs",
-        "videoOwnerChannelId": "UClmGXpXQnF5P7h3YxcYl_wQ"
-      }
     }
   ],
   "pageInfo": {
-    "totalResults": 86,
+    "totalResults": 87,
     "resultsPerPage": 5
   }
 }
