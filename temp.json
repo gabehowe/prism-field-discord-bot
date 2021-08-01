@@ -1,0 +1,12 @@
+{
+  "name": "purge",
+  "description": "removes the last x messages (cannot remove messages older than 2 weeks)",
+  "options": [
+    {
+      "name": "amount",
+      "description": "amount of messages to delete",
+      "type": 4,
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "t": "GUILD_CREATE",
+  "s": 2,
+  "op": 0,
+  "d": {
+    "premium_subscription_count": 0,
+    "lazy": true,
+    "large": false,
+    "name": "AP Server bot testing",
+    "vanity_url_code": null,
+    "emojis": [],
+    "unavailable": false,
+    "premium_tier": 0,
+    "description": null,
+    "icon": "100376f87159bf97647e7f49f0da55b8",
+    "explicit_content_filter": 0,
+    "roles": [
+      {
+        "position": 0,
+        "permissions": "247064940097",
+        "name": "@everyone",
+        "mentionable": false,
+        "managed": false,
+        "id": "822900347332198431",
+        "hoist": false,
+        "color": 0
+      },
+      {
+        "position": 4,
+        "permissions": "6546771529",
+        "name": "sam",
+        "mentionable": false,
+        "managed": false,
+        "id": "824475381679259648",
+        "hoist": false,
+        "color": 0
+      },
+      {
+        "tags": {
+          "bot_id": "159800228088774656"
+        },
+        "position": 3,
+        "permissions": "36703232",
+        "name": "AIRHORN SOLUTIONS",
+        "mentionable": false,
+        "managed": true,
+        "id": "826644598062710805",
+        "hoist": false,
+        "color": 0
+      },
+      {
+        "position": 2,
+        "permissions": "6546771521",
+        "name": "midnight-chan",
+        "mentionable": false,
+        "managed": false,
+        "id": "827298040318525460",
+        "hoist": false,
+        "color": 4325450
+      },
+      {
+        "position": 1,
+        "permissions": "8589410303",
+        "name": "bot",
+        "mentionable": true,
+        "managed": false,
+        "id": "844708841647636490",
+        "hoist": false,
+        "color": 15277667
+      },
+      {
+        "position": 1,
+        "permissions": "0",
+        "name": "role that might possibly be worth something to somebody",
+        "mentionable": false,
+        "managed": false,
+        "id": "844709288400257034",
+        "hoist": false,
+        "color": 15158332
+      },
+      {
+        "tags": {
+          "bot_id": "822901185765703754"
+        },
+        "position": 1,
+        "permissions": "8",
+        "name": "Prismfield Data Parser",
+        "mentionable": false,
+        "managed": true,
+        "id": "844739535799451670",
+        "hoist": false,
+        "color": 0
+      },
+      {
+        "tags": {
+          "bot_id": "870399054964736022"
+        },
+        "position": 1,
+        "permissions": "8",
+        "name": "Prismfield Next Generation",
+        "mentionable": false,
+        "managed": true,
+        "id": "870401940641701940",
+        "hoist": false,
+        "color": 0
+      },
+      {
+        "position": 1,
+        "permissions": "0",
+        "name": "father",
+        "mentionable": false,
+        "managed": false,
+        "id": "870509268015652944",
+        "hoist": false,
+        "color": 10181046
+      }
+    ],
+    "features": [],
+    "preferred_locale": "en-US",
+    "max_members": 100000,
+    "system_channel_flags": 0,
+    "application_command_counts": {
+      "3": 0,
+      "2": 0,
+      "1": 25
+    },
+    "afk_timeout": 300,
+    "verification_level": 0,
+    "owner_id": "385495978469490702",
+    "stickers": [],
+    "public_updates_channel_id": null,
+    "members": [
+      {
+        "user": {
+          "username": "Prismfield Next Generation",
+          "id": "870399054964736022",
+          "discriminator": "9100",
+          "bot": true,
+          "avatar": "a39a18c2084a0e05ca68a68c0ef2a4bb"
+        },
+        "roles": [
+          "870401940641701940"
+        ],
+        "premium_since": null,
+        "pending": false,
+        "nick": null,
+        "mute": false,
+        "joined_at": "2021-07-29T20:26:34.001212+00:00",
+        "is_pending": false,
+        "hoisted_role": null,
+        "deaf": false,
+        "avatar": null
+      }
+    ],
+    "threads": [],
+    "nsfw_level": 0,
+    "voice_states": [],
+    "presences": [],
+    "mfa_level": 0,
+    "system_channel_id": "822900347810873405",
+    "stage_instances": [],
+    "id": "822900347332198431",
+    "channels": [
+      {
+        "type": 4,
+        "position": 0,
+        "permission_overwrites": [],
+        "name": "Text Channels",
+        "id": "822900347332198432"
+      },
+      {
+        "type": 4,
+        "position": 0,
+        "permission_overwrites": [],
+        "name": "Voice Channels",
+        "id": "822900347810873404"
+      },
+      {
+        "type": 0,
+        "topic": null,
+        "rate_limit_per_user": 0,
+        "position": 0,
+        "permission_overwrites": [],
+        "parent_id": "822900347332198432",
+        "name": "general",
+        "last_message_id": "871255666969427968",
+        "id": "822900347810873405"
+      },
+      {
+        "user_limit": 0,
+        "type": 2,
+        "rtc_region": null,
+        "position": 0,
+        "permission_overwrites": [],
+        "parent_id": "822900347810873404",
+        "name": "General",
+        "id": "822900347810873406",
+        "bitrate": 64000
+      },
+      {
+        "type": 0,
+        "topic": "server rules",
+        "rate_limit_per_user": 0,
+        "position": 1,
+        "permission_overwrites": [],
+        "parent_id": "822900347332198432",
+        "name": "rules",
+        "last_message_id": "871134330808827904",
+        "id": "822935000830967899"
+      },
+      {
+        "type": 0,
+        "topic": null,
+        "rate_limit_per_user": 0,
+        "position": 2,
+        "permission_overwrites": [],
+        "parent_id": "822900347332198432",
+        "name": "helpful-hints",
+        "last_message_id": "871125951247945749",
+        "id": "822935037993156689"
+      }
+    ],
+    "max_video_channel_users": 25,
+    "rules_channel_id": null,
+    "afk_channel_id": null,
+    "member_count": 15,
+    "banner": null,
+    "nsfw": false,
+    "region": "us-east",
+    "guild_hashes": {
+      "version": 1,
+      "roles": {
+        "omitted": false,
+        "hash": "z68JrxbNc2Y"
+      },
+      "metadata": {
+        "omitted": false,
+        "hash": "f1DqCqtWtj0"
+      },
+      "channels": {
+        "omitted": false,
+        "hash": "JqYWhyh3XQ0"
+      }
+    },
+    "discovery_splash": null,
+    "application_command_count": 25,
+    "joined_at": "2021-07-29T20:26:34.001212+00:00",
+    "default_message_notifications": 0,
+    "application_id": null,
+    "splash": null
+  }
+}
