@@ -1,12 +1,11 @@
 import datetime
-import json
 from re import findall
 
 import pytz
 
-from classes.member import User, GuildMember, load_guild_member
-from classes.message import load_message, Message
-from util import api_call, DiscordAPIError
+from classes.member import User
+from classes.message import Message
+from util import api_call
 
 
 async def on_command(interaction, bot : User):
@@ -28,7 +27,7 @@ async def on_command(interaction, bot : User):
             await interaction.error()
             return
         for i in messages:
-            message = await load_message(i)  # type: Message
+            message = Message(i)  # type: Message
             if message.timestamp.replace(tzinfo=pytz.UTC) < datetime.datetime.utcnow().replace(
                     tzinfo=pytz.UTC) - datetime.timedelta(weeks=2):
                 messages.remove(i)

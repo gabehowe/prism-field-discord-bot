@@ -1,20 +1,20 @@
 import random
 
-from classes import slashcommandmanager
-from classes.member import load_user, User
-from classes.message import load_message
+from classes.interaction import Interaction
+from classes.member import User
+from classes.message import Message
+from classes.slashcommandmanager import SlashCommand, SlashCommandManager
 from commands import ping, jumbo, purge
 from util import send_text_msg_channel
-from classes.slashcommandmanager import SlashCommand, SlashCommandManager
 
-bot = User()  # type: User
+bot: User
 command_manager = SlashCommandManager()
 
 
 async def on_ready(data):
     print(data)
     global bot
-    bot = await load_user(data['d']['user'])
+    bot = User(data['d']['user'])
     print('Ready!')
     ping_command = SlashCommand()
     ping_command.name = 'ping'
@@ -33,7 +33,7 @@ async def on_ready(data):
 
 
 async def on_message_create(data):
-    message = await load_message(data['d'])
+    message = Message(data['d'])
     if message.author.id == bot.id:
         return
     if random.randint(0, 1000) == 1:
@@ -46,7 +46,7 @@ async def on_message_create(data):
 
 async def on_interaction_create(data):
     global command_manager
-    interaction = await slashcommandmanager.load_interaction(data.get('d'))
+    interaction = Interaction(data.get('d'))
     # TODO add the rest of the commands
     if interaction.data.name == 'ping':
         await ping.on_command(interaction)

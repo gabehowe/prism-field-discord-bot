@@ -1,73 +1,43 @@
-import datetime
+from typing import Tuple
+
 import dateutil.parser
+
+import util
+import data_models.user
+from data_models import guildmember
 
 
 class GuildMember:
-    def __init__(self):
-        self.user = None
-        self.nick = None
-        self.roles = None
-        self.joined_at = None
-        self.premium_since = None
-        self.deaf = None
-        self.mute = None
-        self.pending = None
-        self.permissions = None
-
-
-async def load_guild_member(data: dict):
-    member = GuildMember()
-    if data.get('user') is None:
-        member.user = None
-    else:
-        member.user = await load_user(data.get('user'))
-    member.nick = data.get('nick')
-    member.roles = data.get('roles')
-    member.joined_at = dateutil.parser.parse(str(data.get('joined_at')))
-    if data.get('premium_since') is None:
-        member.premium_since = None
-    else:
-        member.premium_since = dateutil.parser.parse(
-            data.get('premium_since'))
-    member.deaf = data.get('deaf')
-    member.mute = data.get('mute')
-    member.pending = data.get('pending')
-    member.permissions = data.get('permissions')
-
-    return member
+    def __init__(self, data: guildmember.GuildMember):
+        if 'user' in data:
+            self.user = User(data.get('user'))
+        self.nick = data.get('nick')
+        self.roles = data.get('roles')
+        self.joined_at = util.parse_time(data.get('joined_at'))
+        self.premium_since = util.parse_time(data.get('premium_since'))
+        self.deaf = data.get('deaf')
+        self.mute = data.get('mute')
+        self.pending = data.get('pending')
+        self.permissions = data.get('permissions')
 
 
 class User:
-    def __init__(self):
-        self.id = None
-        self.username = None
-        self.discriminator = None
-        self.avatar = None
-        self.bot = None
-        self.system = None
-        self.mfa_enabled = None
-        self.locale = None
-        self.verified = None
-        self.email = None
-        self.flags = None
-        self.premium_type = None
-        self.public_flags = None
+    __slots__: Tuple[str, ...] = (
+        'id', 'username', 'discriminator', 'avatar', 'bot', 'system', 'mfa_enabled', 'locale', 'verified', 'email',
+        'flags',
+        'premium_type', 'public_flags')
 
-
-async def load_user(data: dict):
-    user = User()
-    user.id = data.get('id')
-    user.username = data.get('username')
-    user.discriminator = data.get('discriminator')
-    user.avatar = data.get('avatar')
-    user.bot = data.get('bot')
-    user.system = data.get('system')
-    user.mfa_enabled = data.get('mfa_enabled')
-    user.locale = data.get('locale')
-    user.verified = data.get('verified')
-    user.email = data.get('email')
-    user.flags = data.get('flags')
-    user.premium_type = data.get('premium_type')
-    user.public_flags = data.get('public_flags')
-
-    return user
+    def __init__(self, data: data_models.user.User):
+        self.id = data.get('id')
+        self.username = data.get('username')
+        self.discriminator = data.get('discriminator')
+        self.avatar = data.get('avatar')
+        self.bot = data.get('bot')
+        self.system = data.get('system')
+        self.mfa_enabled = data.get('mfa_enabled')
+        self.locale = data.get('locale')
+        self.verified = data.get('verified')
+        self.email = data.get('email')
+        self.flags = data.get('flags')
+        self.premium_type = data.get('premium_type')
+        self.public_flags = data.get('public_flags')

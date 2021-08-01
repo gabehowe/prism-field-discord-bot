@@ -2,7 +2,6 @@ import asyncio
 import json
 from http.client import *
 
-import aiohttp
 import websockets
 
 from listeners import *

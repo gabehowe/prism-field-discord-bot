@@ -1,4 +1,6 @@
+import datetime
 import json
+from typing import Optional
 
 import aiohttp
 
@@ -29,6 +31,12 @@ async def api_call(path, method="GET", **kwargs):
                     raise DiscordAPIError(str(f"Error: {str(json_response['message'])} {str(json_response['code'])}"))
 
         return json_response
+
+
+def parse_time(time: Optional[str]):
+    if time:
+        return datetime.datetime.fromisoformat(time)
+    return None
 
 
 class DiscordAPIError(Exception):

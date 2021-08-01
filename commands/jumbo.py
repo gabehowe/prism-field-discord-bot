@@ -1,5 +1,6 @@
-from classes.slashcommandmanager import *
 import re
+
+from classes.interaction import Interaction
 
 
 async def on_command(interaction: Interaction):

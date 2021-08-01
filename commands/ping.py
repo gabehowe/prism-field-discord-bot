@@ -1,8 +1,6 @@
+from classes.interaction import InteractionResponse, Interaction
 from classes.slashcommandmanager import *
 
 
 async def on_command(interaction: Interaction):
-    response = InteractionResponse()
-    response.content = "pong"
-    response.ephemeral = True
-    await interaction.reply(response)
+    await interaction.reply_text('pong', True)
