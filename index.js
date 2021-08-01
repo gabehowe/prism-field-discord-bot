@@ -10,7 +10,7 @@ const client = new Discord.Client({
     partials: ['MESSAGE', "CHANNEL", "GUILD_MEMBER", "REACTION", "USER"]
 })
 const config = JSON.parse(fs.readFileSync("config.json"))
-const token = config['token']
+const token = JSON.parse(fs.readFileSync("token.json"))
 const sammyGuildId = config['sammy_guild_id']
 const childProcess = require("child_process")
 const {v4: uuidv4} = require('uuid')
@@ -91,7 +91,7 @@ client.on('ready', async () => {
             }
         })
     }
-    if (!commands.toString().includes("sayas")) {
+    /*if (!commands.toString().includes("sayas")) {
         await getApp(sammyGuildId).commands.post({
             data: {
                 name: 'sayas',
@@ -112,7 +112,8 @@ client.on('ready', async () => {
                 ]
             },
         })
-    }
+    }*/
+    await client.guilds.cache.get(sammyGuildId).commands.delete('871197746957283359')
     if (!commands.toString().includes("vote")) {
         await getApp(sammyGuildId).commands.post({
             data: {
@@ -268,6 +269,7 @@ client.ws.on('INTERACTION_CREATE', async (interaction) => {
         await reply(interaction, userLanguage["pong"], 4)
     }
     else if (command === "sayas") {
+        console.log(interaction.id)
         const guild = client.guilds.cache.get(sammyGuildId)
         let member = guild.members.cache.get(args['user'])
         if (member === undefined) {
