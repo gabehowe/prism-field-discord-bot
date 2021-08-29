@@ -1,5 +1,6 @@
 import datetime
 import json
+from http.client import HTTPSConnection
 from typing import Optional
 
 import aiohttp
@@ -31,6 +32,16 @@ async def api_call(path, method="GET", **kwargs):
                     raise DiscordAPIError(str(f"Error: {str(json_response['message'])} {str(json_response['code'])}"))
 
         return json_response
+
+
+async def geturl(token: str):
+    hostname = 'discord.com'
+    connection = HTTPSConnection(hostname)
+    connection.putrequest('GET', '/api/v9/gateway/bot')
+    connection.putheader('Authorization', 'Bot %s' % token)
+    connection.endheaders()
+    response = connection.getresponse().read().decode()
+    return json.loads(response)['url']
 
 
 def parse_time(time: Optional[str]):

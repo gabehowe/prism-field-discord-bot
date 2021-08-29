@@ -1,6 +1,7 @@
 from typing import Tuple
 
 from classes.member import GuildMember, User
+from classes.permissions import Permissions
 from classes.slashcommandmanager import ApplicationCommandData
 from data_models import interaction
 from data_models.interaction import InteractionResponse
@@ -28,16 +29,24 @@ class Interaction:
         if 'user' in data:
             self.user = User(data.get('user'))
 
-    async def reply_text(self, text: str, ephemeral: bool = False):
-        flags = 64 if ephemeral else None
-        response: InteractionResponse = {'type': 4, 'data': {'content': text, 'flags': flags}}
-        await api_call(f'/interactions/{self.id}/{self.token}/callback', "POST", json=response)
-
-    async def reply(self, response: InteractionResponse):
-        await api_call(f'/interactions/{self.id}/{self.token}/callback', "POST", json=InteractionResponse)
+    async def reply(self, response, ephemeral: bool = False):
+        if response is None:
+            return
+        elif type(response) is InteractionResponse:
+            return await api_call(f'/interactions/{self.id}/{self.token}/callback', "POST", json=response)
+        elif type(response) is str:
+            flags = 64 if ephemeral else None
+            response: InteractionResponse = {'type': 4, 'data': {'content': response, 'flags': flags}}
+            await self.reply(response)
 
     async def error(self, extra: str = None):
         if extra is not None:
-            await self.reply_text('There was an error executing this command: ' + extra, True)
+            await self.reply('There was an error executing this command: ' + extra, True)
         else:
-            await self.reply_text('There was an error executing this command.', True)
+            await self.reply('There was an error executing this command.', True)
+
+    async def no_permission(self, extra: Permissions = None):
+        if extra is not None:
+            await self.reply(f'You need the `{extra.name}` permission to use this.', True)
+        else:
+            await self.reply('You don\'t have permission to use this.', True)

@@ -1,7 +1,8 @@
+import json
 import random
 
 from classes.interaction import Interaction
-from classes.member import User
+from classes.member import User, get_user
 from classes.message import Message
 from classes.slashcommandmanager import SlashCommand, SlashCommandManager
 from commands import ping, jumbo, purge
@@ -16,20 +17,19 @@ async def on_ready(data):
     global bot
     bot = User(data['d']['user'])
     print('Ready!')
-    ping_command = SlashCommand()
-    ping_command.name = 'ping'
-    ping_command.description = 'pings the bot'
-    jumbo_command = SlashCommand()
-    jumbo_command.name = 'jumbo'
-    jumbo_command.description = 'resizes custom emojis'
-    jumbo_command.options = [{"name": "emoji", "description": 'the emoji to resize', "type": 3, "required": True}]
+    with open('./bot_data/rules.json', 'r', encoding='utf-8') as file:
+        file_json = json.load(file)
+        await (await get_user('385495978469490702')).dm(file_json['img'])
+    # ping_command = SlashCommand()
+    # ping_command.name = 'ping'
+    # ping_command.description = 'pings the bot'
+    # jumbo_command = SlashCommand()
+    # jumbo_command.name = 'jumbo'
+    # jumbo_command.description = 'resizes custom emojis'
+    # jumbo_command.options = [{"name": "emoji", "description": 'the emoji to resize', "type": 3, "required": True}]
     await command_manager.load_commands(bot)
-    # cmd = filter(item.name == jumbo_command.name for item in command_manager.commands_array)
-    # jumbo_command.id = cmd[0].id
-    # await command_manager.modify_command(jumbo_command, bot)
-    await command_manager.register_command(jumbo_command, bot)
-
-    await command_manager.register_command(ping_command, bot)
+    # await command_manager.register_command(jumbo_command, bot)
+    # await command_manager.register_command(ping_command, bot)
 
 
 async def on_message_create(data):

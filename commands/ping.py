@@ -3,4 +3,4 @@ from classes.slashcommandmanager import *
 
 
 async def on_command(interaction: Interaction):
-    await interaction.reply_text('pong', True)
+    await interaction.reply('pong', True)

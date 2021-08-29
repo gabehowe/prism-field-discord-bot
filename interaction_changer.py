@@ -1,25 +1,12 @@
 import argparse
 import asyncio
 import json
-from http.client import HTTPSConnection
 
 import websockets
 
-from classes.member import load_user
+from classes.member import User
 from classes.slashcommandmanager import load_command, SlashCommandManager
-from util import api_call
-
-
-async def geturl():
-    hostname = 'discord.com'
-    connection = HTTPSConnection(hostname)
-    connection.putrequest('GET', '/api/v9/gateway/bot')
-    connection.putheader('Authorization', 'Bot %s' % config['token'])
-    connection.endheaders()
-    response = connection.getresponse().read().decode()
-    url = json.loads(response)['url']
-    return url
-
+from util import api_call, geturl
 
 parser = argparse.ArgumentParser(description='updates slash command data')
 parser.add_argument('--file', help='the JSON file to send. if GET is used, the file to save the data to', required=True)
@@ -31,8 +18,7 @@ parser.add_argument('--cmd_id', help='command id used for patch')
 
 
 async def login_here():
-    async with websockets.connect(f'{await geturl()}?v=9&encoding=json') as ws:
-        last_sequence = None
+    async with websockets.connect(f'{await geturl(config["token"])}?v=9&encoding=json') as ws:
         async for msg in ws:
             data = json.loads(msg)
             if data['op'] == 10:
@@ -47,8 +33,6 @@ async def login_here():
                     }
                 }))
                 print(data)
-            if data['op'] == 0:
-                last_sequence = data['s']
             if data['t'] == 'READY':
                 await run_ready(data)
             elif data['op'] == 11:
@@ -56,7 +40,7 @@ async def login_here():
                 pass
             elif data['op'] == 7:
                 # TODO fix that stupid reconnecting thing
-                ws = websockets.connect(f'{await geturl()}?v=9&encoding=json')
+                ws = websockets.connect(f'{await geturl(config["token"])}?v=9&encoding=json')
                 print(data)
                 pass
             else:
@@ -71,7 +55,7 @@ async def run_ready(data):
     args = parser.parse_args()
     print('line 60')
     is_guild = False if args.guild_id is None else True
-    bot = await load_user(data['d']['user'])
+    bot = User(data['d']['user'])
     file = open(args.file).read()
 
     method = args.method

@@ -2,9 +2,13 @@ from typing import Tuple
 
 import dateutil.parser
 
-import util
+from classes.channel import Channel, TextChannel
+from data_models.message import SendingMessage
+from util import api_call
 import data_models.user
+from classes import permissions
 from data_models import guildmember
+from typing import List
 
 
 class GuildMember:
@@ -18,14 +22,24 @@ class GuildMember:
         self.deaf = data.get('deaf')
         self.mute = data.get('mute')
         self.pending = data.get('pending')
-        self.permissions = data.get('permissions')
+        self.permissions_int = data.get('permissions')
+        if self.permissions_int is not None:
+            self.permissions_int = int(self.permissions_int)
+            self.permissions_list = []  # type: List[permissions.Permissions]
+            for i in permissions.Permissions:
+                if self.permissions_int & int(i.value) == int(i.value):
+                    self.permissions_list.append(i)
+
+
+async def get_user(user_id: str):
+    user_json = await api_call(f'/users/{user_id}')
+    return User(user_json)
 
 
 class User:
     __slots__: Tuple[str, ...] = (
         'id', 'username', 'discriminator', 'avatar', 'bot', 'system', 'mfa_enabled', 'locale', 'verified', 'email',
-        'flags',
-        'premium_type', 'public_flags')
+        'flags', 'premium_type', 'public_flags')
 
     def __init__(self, data: data_models.user.User):
         self.id = data.get('id')
@@ -41,3 +55,13 @@ class User:
         self.flags = data.get('flags')
         self.premium_type = data.get('premium_type')
         self.public_flags = data.get('public_flags')
+
+    async def get_dm_channel(self):
+        return TextChannel(await api_call('/users/@me/channels', 'POST', json={"recipient_id": self.id}))
+
+    async def dm(self, message):
+        if message is None:
+            return
+        elif type(message) is SendingMessage or type(message) is str:
+            channel = await self.get_dm_channel()
+            return await channel.send(message)

@@ -1,12 +1,21 @@
 {
-  "name": "purge",
-  "description": "removes the last x messages (cannot remove messages older than 2 weeks)",
+  "name": "setup",
+  "description": "sets up a server utility",
   "options": [
     {
-      "name": "amount",
-      "description": "amount of messages to delete",
-      "type": 4,
-      "required": true
+      "name": "rules",
+      "description": "creates the rules message",
+      "type": 1
+    },
+    {
+      "name": "hints",
+      "description": "creates the helpful hints message",
+      "type": 1
+    },
+    {
+      "name": "roles",
+      "description": "creates the roles message",
+      "type": 1
     }
   ]
 }
