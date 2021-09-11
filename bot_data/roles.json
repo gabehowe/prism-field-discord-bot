@@ -1,0 +1,82 @@
+{
+  "content": "Pick your roles from the list",
+  "components": [
+    {
+      "type": 1,
+      "components": [
+        {
+          "type": 3,
+          "custom_id": "roles_select",
+          "max_values": 6,
+          "options": [
+            {
+              "label": "Americas",
+              "value": "americas",
+              "description": "Anyone from anywhere in North America",
+              "emoji": {
+                "name": "america",
+                "id": "882341033843781633"
+              }
+            },
+            {
+              "label": "Other",
+              "value": "not american",
+              "description": "Anyone from regions outside north america",
+              "emoji": {
+                "name": "europe_africa",
+                "id": "882341569628364800"
+              }
+            },
+            {
+              "label": "Furry",
+              "value": "furry",
+              "description": "Anyone who classifies themselves as a furry",
+              "emoji": {
+                "name": "cat_smiling",
+                "id": "882341895492210738"
+              }
+            },
+            {
+              "label": "Gamer",
+              "value": "gamer",
+              "description": "Anyone who'd say they play games often",
+              "emoji": {
+                "name": "game_controller",
+                "id": "882342191165493359"
+              }
+            },
+            {
+              "label": "Announcements",
+              "value": "announcements",
+              "description": "Ping role for Server and YouTube announcements",
+              "emoji": {
+                "name": "double_exclamation_mark",
+                "id": "882342299919597578"
+              }
+            },
+            {
+              "label": "Weeb",
+              "value": "weeb",
+              "description": "Anyone interested in anime and classifies themselves as such",
+              "emoji": {
+                "name": "hibiscus",
+                "id": "882342438973366272"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "components": [
+        {
+          "type": 2,
+          "style": 4,
+          "label": "Reset Roles",
+          "custom_id": "reset_roles"
+        }
+      ]
+    }
+  ]
+}

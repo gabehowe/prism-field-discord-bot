@@ -1,6 +1,8 @@
 import warnings
+from typing import Optional, List
 
 from classes.member import User
+from data_models.interaction import ApplicationCommandInteractionData, ApplicationCommandInteractionDataOption
 from util import api_call
 
 
@@ -28,13 +30,24 @@ async def load_command(data: dict):
 
 
 class ApplicationCommandData:
-    def __init__(self, data):
+    def __init__(self, data: ApplicationCommandInteractionData):
         self.id = data.get('id')
         self.name = data.get('name')
         self.resolved = data.get('resolved')
-        self.options = data.get('options')
+        if 'options' in data:
+            self.options = [ApplicationCommandDataOption(i) for i in data.get('options')]
         self.custom_id = data.get('custom_id')
         self.component_type = data.get('component_type')
+        self.values: Optional[List[str]] = data.get('values')
+
+
+class ApplicationCommandDataOption:
+    def __init__(self, data: ApplicationCommandInteractionDataOption):
+        self.name = data.get('name')
+        self.type = data.get('type')
+        self.value = data.get('value')
+        if 'options' in data:
+            self.options = [ApplicationCommandDataOption(i) for i in data.get('options')]
 
 
 class SlashCommandManager:

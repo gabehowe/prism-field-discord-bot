@@ -1,3 +1,4 @@
+import asyncio
 import datetime
 import json
 from http.client import HTTPSConnection
@@ -28,8 +29,11 @@ async def api_call(path, method="GET", **kwargs):
 
             json_response = await response.json(content_type=response.content_type)
             if json_response is not None:
+                if 'retry_after' in json_response:
+                    await asyncio.sleep(json_response['retry_after'])
+                    return
                 if 'message' in json_response:
-                    raise DiscordAPIError(str(f"Error: {str(json_response['message'])} {str(json_response['code'])}"))
+                    raise DiscordAPIError(json_response.get('code'), json_response.get('message'))
 
         return json_response
 
@@ -51,4 +55,17 @@ def parse_time(time: Optional[str]):
 
 
 class DiscordAPIError(Exception):
+    def __init__(self, code, message):
+        self.code = code
+        self.message = message
+
     pass
+
+
+async def handle_exceptions(e: DiscordAPIError, interaction):
+    code = e.code
+    if code == 50013:
+        await interaction.no_permission_bot()
+        return
+    else:
+        print(e)

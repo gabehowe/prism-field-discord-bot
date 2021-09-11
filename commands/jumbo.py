@@ -1,11 +1,12 @@
 import re
 
+import util
 from classes.interaction import Interaction
 
 
 async def on_command(interaction: Interaction):
     try:
-        emoji_str = str(interaction.data.options[0]['value'])
+        emoji_str = str(interaction.data.options[0].value)
         if emoji_str not in re.findall(r'^.*[<]+[a]?[:]+.*[:]+\d+>.*$', emoji_str):
             await interaction.reply("Invalid Emoji (Emoji must be custom)")
             return
@@ -14,5 +15,9 @@ async def on_command(interaction: Interaction):
         ext = ".gif" if is_animated else ".png"
         await interaction.reply(f'https://cdn.discordapp.com/emojis/{emoji_id}{ext}')
     except Exception as e:
+        if type(e) is util.DiscordAPIError:
+            # noinspection PyTypeChecker
+            await util.handle_exceptions(e, interaction)
+            return
         await interaction.error()
-        print(e)
+        print(e, e.args)

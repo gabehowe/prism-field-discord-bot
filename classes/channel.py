@@ -1,7 +1,6 @@
 from typing import Tuple
 
-from data_models.channel import ChannelType, ChannelTypeType
-from data_models.message import SendingMessage
+import data_models.channel
 from util import api_call
 
 
@@ -12,9 +11,9 @@ class Channel:
         'application_id', 'parent_id', 'last_pin_timestamp', 'rtc_region', 'video_quality_mode', 'message_count',
         'member_count', 'thread_metadata', 'member', 'default_auto_archive_duration', 'permissions')
 
-    def __init__(self, data: ChannelType):
+    def __init__(self, data: data_models.channel.Channel):
         self.id = data.get('id')
-        self.type = ChannelTypeType(data.get('type'))
+        self.type = data_models.channel.ChannelType(data.get('type'))
         self.guild_id = data.get('guild_id')
         self.position = data.get('position')
         self.permission_overwrites = data.get('permission_overwrites')
@@ -45,7 +44,7 @@ class TextChannel(Channel):
     async def send(self, message):
         if message is None:
             return
-        elif type(message) is SendingMessage:
+        elif type(message) is dict:
             return await api_call(f'/channels/{self.id}/messages', 'POST', json=message)
         elif type(message) is str:
             return await api_call(f'/channels/{self.id}/messages', 'POST', json={"content": message})

@@ -1,14 +1,13 @@
+from typing import List
 from typing import Tuple
 
-import dateutil.parser
-
-from classes.channel import Channel, TextChannel
-from data_models.message import SendingMessage
-from util import api_call
 import data_models.user
+import util
 from classes import permissions
+from classes.channel import TextChannel
+from classes.role import Role
 from data_models import guildmember
-from typing import List
+from util import api_call
 
 
 class GuildMember:
@@ -16,7 +15,10 @@ class GuildMember:
         if 'user' in data:
             self.user = User(data.get('user'))
         self.nick = data.get('nick')
-        self.roles = data.get('roles')
+        if 'roles' in data:
+            self.roles: List[Role] = []
+            for i in data.get('roles'):
+                self.roles.append(Role(i))
         self.joined_at = util.parse_time(data.get('joined_at'))
         self.premium_since = util.parse_time(data.get('premium_since'))
         self.deaf = data.get('deaf')
@@ -25,10 +27,16 @@ class GuildMember:
         self.permissions_int = data.get('permissions')
         if self.permissions_int is not None:
             self.permissions_int = int(self.permissions_int)
-            self.permissions_list = []  # type: List[permissions.Permissions]
+            self.permissions_list: List[permissions.Permissions] = []
             for i in permissions.Permissions:
                 if self.permissions_int & int(i.value) == int(i.value):
                     self.permissions_list.append(i)
+
+    async def add_role(self, role_id: str, guild_id: str):
+        await api_call(f'/guilds/{guild_id}/members/{self.user.id}/roles/{role_id}', 'PUT')
+
+    async def remove_role(self, role_id: str, guild_id: str):
+        await api_call(f'/guilds/{guild_id}/members/{self.user.id}/roles/{role_id}', 'DELETE')
 
 
 async def get_user(user_id: str):
@@ -62,6 +70,6 @@ class User:
     async def dm(self, message):
         if message is None:
             return
-        elif type(message) is SendingMessage or type(message) is str:
+        elif type(message) is dict or type(message) is str:
             channel = await self.get_dm_channel()
             return await channel.send(message)

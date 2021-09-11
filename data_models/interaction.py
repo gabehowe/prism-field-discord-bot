@@ -1,5 +1,5 @@
 import enum
-from typing import Optional, TypedDict, List, Dict
+from typing import TypedDict, List, Dict
 
 from data_models.guildmember import GuildMember
 from data_models.message import Message
@@ -37,7 +37,7 @@ class ApplicationCommandOptionType(enum.Enum):
     NUMBER = 10
 
 
-class InteractionType(enum.Enum):
+class InteractionType(enum.IntEnum):
     PING = 1
     APPLICATION_COMMAND = 2
     MESSAGE_COMPONENT = 3
@@ -63,11 +63,14 @@ class ApplicationCommandInteractionDataResolved(TypedDict, total=False):
 class _ApplicationCommandInteractionDataOptional(TypedDict, total=False):
     resolved: ApplicationCommandInteractionDataResolved
     options: List[ApplicationCommandInteractionDataOption]
+    values: list
+    target_id: str
 
 
 class ApplicationCommandInteractionData(_ApplicationCommandInteractionDataOptional):
     id: str
     name: str
+    type: int
     custom_id: str
     component_type: int
 
