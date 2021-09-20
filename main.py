@@ -1,6 +1,7 @@
 import asyncio
 import json
 
+import util
 from classes.client import Client
 
 with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='utf-8') as configfile:
@@ -8,9 +9,13 @@ with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='ut
 
 
 async def main():
-    client = Client()
+    while True:
+        try:
+            client = Client()
+            await client.run(config['token'])
+        except Exception as e:
+            await util.log(str(e))
 
-    await client.run(config['token'])
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())

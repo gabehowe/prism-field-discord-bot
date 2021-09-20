@@ -1,6 +1,7 @@
-from typing import Tuple
+from typing import Tuple, Union
 
 import data_models.channel
+from data_models.channel import ChannelType
 from util import api_call
 
 
@@ -48,3 +49,14 @@ class TextChannel(Channel):
             return await api_call(f'/channels/{self.id}/messages', 'POST', json=message)
         elif type(message) is str:
             return await api_call(f'/channels/{self.id}/messages', 'POST', json={"content": message})
+
+
+async def get_channel(channel_id: str) -> Union[Channel, None, TextChannel]:
+    channel_json = await api_call(f'/channels/{channel_id}')
+    if channel_json is None:
+        return None
+    channel: Union[Channel, TextChannel] = Channel(channel_json)
+    if channel.type in [ChannelType.GUILD_TEXT, ChannelType.DM, ChannelType.GROUP_DM, ChannelType.GUILD_NEWS,
+                        ChannelType.GUILD_STORE, ChannelType.GUILD_PUBLIC_THREAD, ChannelType.GUILD_PRIVATE_THREAD]:
+        channel = TextChannel(channel_json)
+    return channel

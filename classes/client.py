@@ -8,6 +8,7 @@ import aiohttp
 from aiohttp import ClientWebSocketResponse
 
 import util
+from classes.channel import TextChannel
 from classes.guild import Guild
 from classes.member import User
 from listeners import on_ready, on_message_create, on_interaction_create
@@ -53,6 +54,7 @@ class Client:
             await self.socket.close()
 
     async def handle_message(self, msg: str):
+        channel: Optional[TextChannel]
         data = json.loads(msg)
         if data['op'] == 10:
             await self.socket.send_str(json.dumps({
@@ -70,6 +72,7 @@ class Client:
         if data['op'] == 0:
             self.last_sequence = data['s']
         if data['t'] == 'READY':
+            await util.log('Ready.')
             self.session_id = data['d']['session_id']
             self.bot = User(data['d']['user'])
             guilds = await util.api_call('/users/@me/guilds')
@@ -93,12 +96,14 @@ class Client:
                 str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             pass
         elif data['op'] == 9:
+            await util.log('Session invalidated, reconnecting...')
             print(
                 str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             await self.reconnect_socket(False)
             await self.socket.close()
 
         elif data['op'] == 7:
+            await util.log('Reconnecting and resuming...')
             print(
                 str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             await self.reconnect_socket()
@@ -120,6 +125,7 @@ class Client:
             await self.socket.send_str(
                 json.dumps({"op": 6, "d": {"token": self.token, "session_id": self.session_id,
                                            "seq": self.last_sequence}}))
+        await util.log('Reconnected.')
 
     async def login(self):
         self.socket = await self.session.ws_connect(url=await geturl(self.token))

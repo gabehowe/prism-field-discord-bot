@@ -31,7 +31,7 @@ class _ChannelOptional(TypedDict, total=False):
     permissions: str
 
 
-class ChannelType(enum.Enum):
+class ChannelType(enum.IntEnum):
     GUILD_TEXT = 0
     DM = 1
     GUILD_VOICE = 2

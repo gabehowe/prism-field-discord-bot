@@ -1,21 +1,42 @@
 import asyncio
-import datetime
 import json
+import math
+from datetime import datetime
 from http.client import HTTPSConnection
 from typing import Optional
 
 import aiohttp
 
+from data_models.channel import ChannelType
+
 url = "https://discord.com/api/v9"
-with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='utf-8') as configfile:
-    config = json.load(configfile)
+config: dict
 
 
-async def send_text_msg_channel(channel_id, content):
-    return await api_call(f'/channels/{channel_id}/messages', "POST", json={"content": content})
+def _update_config():
+    global config
+    with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='utf-8') as configfile:
+        config = json.load(configfile)
+
+
+_update_config()
+
+
+async def log(string: str):
+    channel_json = await api_call(f'/channels/{config["log_channel_id"]}')
+
+    if channel_json.get('type') in [ChannelType.GUILD_TEXT, ChannelType.DM, ChannelType.GROUP_DM,
+                                    ChannelType.GUILD_NEWS,
+                                    ChannelType.GUILD_STORE, ChannelType.GUILD_PUBLIC_THREAD,
+                                    ChannelType.GUILD_PRIVATE_THREAD]:
+        _update_config()
+        log_id = config['log_channel_id']
+        return await api_call(f'/channels/{log_id}/messages', "POST", json={"content": str(
+            f'[<t:{math.floor(datetime.now().timestamp())}:D><t:{math.floor(datetime.now().timestamp())}:T>] {string}')})
 
 
 async def api_call(path, method="GET", **kwargs):
+    _update_config()
     defaults = {"headers": {"Authorization": f'Bot {config["token"]}',
                             "User-Agent": "dBot (https://github.com/gabehowe, 0.1.0)",
                             "Content-Type": "application/json"}}
@@ -50,7 +71,7 @@ async def geturl(token: str):
 
 def parse_time(time: Optional[str]):
     if time:
-        return datetime.datetime.fromisoformat(time)
+        return datetime.fromisoformat(time)
     return None
 
 

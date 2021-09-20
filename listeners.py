@@ -6,6 +6,7 @@ from classes.message import Message
 from classes.slashcommandmanager import SlashCommandManager
 from commands import ping, jumbo, purge, setup
 from data_models.interaction import InteractionType
+from util import log
 
 bot: User
 command_manager = SlashCommandManager()
@@ -35,6 +36,7 @@ async def on_message_create(data):
 async def on_interaction_create(data, client):
     global command_manager
     interaction = await Interaction(data.get('d')).async_init(data.get('d'), client)
+    await log(f'{interaction.member.user.username} used "{interaction.data.name or interaction.data.custom_id}".')
     # TODO add the rest of the commands
     if interaction.type == InteractionType.APPLICATION_COMMAND:
         if interaction.data.name == 'ping':
