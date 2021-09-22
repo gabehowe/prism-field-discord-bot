@@ -52,7 +52,7 @@ class ApplicationCommandDataOption:
 
 class SlashCommandManager:
     def __init__(self):
-        self.commands_array = []
+        self.commands_array: List[SlashCommand] = []
         self.loaded = False
 
     async def load_commands(self, bot):

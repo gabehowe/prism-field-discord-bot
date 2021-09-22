@@ -92,8 +92,6 @@ class Client:
         elif data['t'] == 'GUILD_MEMBER_UPDATE':
             pass
         elif data['op'] == 11:
-            print(
-                str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             pass
         elif data['op'] == 9:
             await util.log('Session invalidated, reconnecting...')
@@ -102,6 +100,7 @@ class Client:
             await self.reconnect_socket(False)
 
         elif data['op'] == 7:
+            await util.log('Session invalidated, reconnecting and resuming...')
             print(
                 str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             await self.reconnect_socket()
@@ -114,6 +113,7 @@ class Client:
         await util.log(reconnect_str)
         self.reconnect = False
         await self.login()
+        await util.log('Reconnected.' if not resume else 'Reconnected and resumed.')
         if resume:
             self.resume = False
             await self.socket.send_str(

@@ -53,7 +53,6 @@ with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='ut
 
 async def run_ready(data):
     args = parser.parse_args()
-    print('line 60')
     is_guild = False if args.guild_id is None else True
     bot = User(data['d']['user'])
     file = json.loads(open(args.file).read())

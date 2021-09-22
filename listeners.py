@@ -4,7 +4,7 @@ from classes.interaction import Interaction
 from classes.member import User
 from classes.message import Message
 from classes.slashcommandmanager import SlashCommandManager
-from commands import ping, jumbo, purge, setup
+from commands import ping, jumbo, purge, setup, test
 from data_models.interaction import InteractionType
 from util import log
 
@@ -18,6 +18,9 @@ async def on_ready(data, client):
     bot = client.bot
     print('Ready!')
     await command_manager.load_commands(bot)
+    with open('commands.txt', 'w+') as commands_file:
+        commands_file.write(str([f'{it.id}, {it.name}, {it.options}\n' for it in command_manager.commands_array]))
+    commands_file.close()
 
 
 async def on_message_create(data):
@@ -48,11 +51,7 @@ async def on_interaction_create(data, client):
         if interaction.data.name == 'setup':
             await setup.on_command(interaction)
         if interaction.data.name == 'test':
-            subcommand = interaction.data.options[0].name
-            if subcommand == 'resume':
-                await client.reconnect_socket()
-            elif subcommand == 'reconnect':
-                await client.reconnect_socket(False)
+            await test.on_command(interaction, client)
 
     if interaction.type == InteractionType.MESSAGE_COMPONENT:
         if interaction.data.custom_id == 'roles_select':

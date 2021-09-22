@@ -4,14 +4,10 @@
     "type": 1,
     "options": [
         {
-            "name": "reconnect",
-            "description": "attempts to reconnect",
-            "type": 1
-        },
-        {
-            "name": "resume",
-            "description": "attempts to reconnect and resume",
-            "type": 1
+            "type": 3,
+            "name": "feature",
+            "description": "feature to test",
+            "required": true
         }
     ]
 }
