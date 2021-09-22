@@ -9,7 +9,7 @@ from util import api_call, DiscordAPIError
 
 
 async def on_command(interaction: Interaction, bot: User):
-    if not hasattr(interaction, 'member'):
+    if not interaction.is_guild:
         await interaction.reply('This command must be used in a guild.', True)
         return
     if Permissions.MANAGE_MESSAGES not in interaction.member.permissions_list:

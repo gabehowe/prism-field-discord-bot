@@ -18,7 +18,7 @@ from util import api_call, config
 class Interaction:
     __slots__: Tuple[str, ...] = (
         'id', 'application_id', 'type', 'data', 'guild_id', 'channel', 'member', 'user', 'token', 'version',
-        'message', 'bot', 'guild')
+        'message', 'bot', 'guild', 'is_guild')
 
     def __init__(self, data: interaction.Interaction):
         self.id = data.get('id')
@@ -35,8 +35,13 @@ class Interaction:
             self.data = ApplicationCommandData(data.get('data'))
         if 'member' in data:
             self.member = GuildMember(data.get('member'))
+        else:
+            self.member = None
         if 'user' in data:
             self.user = User(data.get('user'))
+        else:
+            self.user = self.member.user
+        self.is_guild = self.member is not None
 
     async def async_init(self, data: interaction.Interaction, client):
         if 'guild_id' in data:

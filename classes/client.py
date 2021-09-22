@@ -11,6 +11,7 @@ import util
 from classes.channel import TextChannel
 from classes.guild import Guild
 from classes.member import User
+from colors import printc, Color
 from listeners import on_ready, on_message_create, on_interaction_create
 from util import geturl
 
@@ -68,7 +69,6 @@ class Client:
                 }
             }))
             self.heartbeat_handler = asyncio.ensure_future(self.heartbeat(self.socket, data['d']['heartbeat_interval']))
-            print(data)
         if data['op'] == 0:
             self.last_sequence = data['s']
         if data['t'] == 'READY':
@@ -101,14 +101,14 @@ class Client:
             pass
         elif data['op'] == 9:
             await util.log('Session invalidated, reconnecting...')
-            print(
-                str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
+            printc(Color.WARNING,
+                   str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             await self.reconnect_socket(False)
 
         elif data['op'] == 7:
             await util.log('Session invalidated, reconnecting and resuming...')
-            print(
-                str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
+            printc(Color.WARNING,
+                   str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             await self.reconnect_socket()
         else:
             print(
