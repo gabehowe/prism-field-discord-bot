@@ -100,26 +100,20 @@ class Client:
             print(
                 str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             await self.reconnect_socket(False)
-            await self.socket.close()
 
         elif data['op'] == 7:
-            await util.log('Reconnecting and resuming...')
             print(
                 str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
             await self.reconnect_socket()
-            await self.socket.close()
         else:
             print(
                 str(data) + ' ' + str(f'{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}'))
 
     async def reconnect_socket(self, resume=True):
+        reconnect_str = 'Reconnecting and resuming...' if resume else 'Reconnecting...'
+        await util.log(reconnect_str)
         self.reconnect = False
-        self.events_handler.cancel()
-        self.heartbeat_handler.cancel()
-        await self.socket.close()
-        self.socket = await self.session.ws_connect(url=await geturl(self.token))
-        self.events_handler = asyncio.create_task(self.handle_events())
-        await self.events_handler
+        await self.login()
         if resume:
             self.resume = False
             await self.socket.send_str(

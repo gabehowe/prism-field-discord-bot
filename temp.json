@@ -1,21 +1,17 @@
 {
-  "name": "setup",
-  "description": "sets up a server utility",
-  "options": [
-    {
-      "name": "rules",
-      "description": "creates the rules message",
-      "type": 1
-    },
-    {
-      "name": "hints",
-      "description": "creates the helpful hints message",
-      "type": 1
-    },
-    {
-      "name": "roles",
-      "description": "creates the roles message",
-      "type": 1
-    }
-  ]
+    "name": "test",
+    "description": "tests a feature",
+    "type": 1,
+    "options": [
+        {
+            "name": "reconnect",
+            "description": "attempts to reconnect",
+            "type": 1
+        },
+        {
+            "name": "resume",
+            "description": "attempts to reconnect and resume",
+            "type": 1
+        }
+    ]
 }

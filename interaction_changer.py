@@ -56,7 +56,7 @@ async def run_ready(data):
     print('line 60')
     is_guild = False if args.guild_id is None else True
     bot = User(data['d']['user'])
-    file = open(args.file).read()
+    file = json.loads(open(args.file).read())
 
     method = args.method
 
@@ -95,7 +95,7 @@ async def run_ready(data):
             with open(args.file, 'w+x') as e:
                 e.write(json_object)
         elif method == 'POST':
-            cmd = await load_command(json.loads(file))
+            cmd = await load_command(file)
 
             print(await SlashCommandManager().register_command(cmd, bot))
 

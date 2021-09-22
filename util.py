@@ -54,6 +54,7 @@ async def api_call(path, method="GET", **kwargs):
                     await asyncio.sleep(json_response['retry_after'])
                     return
                 if 'message' in json_response:
+                    print(json_response)
                     raise DiscordAPIError(json_response.get('code'), json_response.get('message'))
 
         return json_response
@@ -76,9 +77,10 @@ def parse_time(time: Optional[str]):
 
 
 class DiscordAPIError(Exception):
-    def __init__(self, code, message):
+    def __init__(self, code, message, body=None):
         self.code = code
         self.message = message
+        self.body = body
 
     pass
 
@@ -89,4 +91,5 @@ async def handle_exceptions(e: DiscordAPIError, interaction):
         await interaction.no_permission_bot()
         return
     else:
-        print(e)
+        print(f'DiscordAPIError: {e}')
+        await log(str(e))

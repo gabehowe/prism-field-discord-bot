@@ -47,6 +47,13 @@ async def on_interaction_create(data, client):
             await purge.on_command(interaction, bot)
         if interaction.data.name == 'setup':
             await setup.on_command(interaction)
+        if interaction.data.name == 'test':
+            subcommand = interaction.data.options[0].name
+            if subcommand == 'resume':
+                await client.reconnect_socket()
+            elif subcommand == 'reconnect':
+                await client.reconnect_socket(False)
+
     if interaction.type == InteractionType.MESSAGE_COMPONENT:
         if interaction.data.custom_id == 'roles_select':
             await setup.on_select_menu(interaction)

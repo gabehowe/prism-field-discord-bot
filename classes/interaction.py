@@ -1,13 +1,18 @@
+import json
+import os
 from typing import Tuple, Optional
 
+import requests
+from requests_toolbelt import MultipartEncoder
+
+import util
 from classes.channel import TextChannel
 from classes.guild import Guild
 from classes.member import GuildMember, User
 from classes.permissions import Permissions
 from classes.slashcommandmanager import ApplicationCommandData
 from data_models import interaction
-from data_models.interaction import InteractionResponse
-from util import api_call
+from util import api_call, config
 
 
 class Interaction:
@@ -58,8 +63,21 @@ class Interaction:
         elif isinstance(response, dict):
             return await api_call(f'/interactions/{self.id}/{self.token}/callback', "POST", json=response)
         elif type(response) is str:
+            if os.path.isfile(response):
+                data = {'type': 4}
+                char = '/' if '/' in response else '\\'
+                encoder = MultipartEncoder(fields={'payload_json': (None, json.dumps(data), 'application/json'),
+                                                   'file': (
+                                                       f'{response[response.rindex(char) + 1:]}',
+                                                       open(f'{response}', 'rb'),
+                                                       f'image/{response[response.rindex(".") + 1:]}')})
+                requests.post(f'{util.url}/interactions/{self.id}/{self.token}/callback',
+                              headers={"Authorization": f'Bot {config["token"]}',
+                                       "User-Agent": "dBot (https://github.com/gabehowe, 0.1.0)",
+                                       "Content-Type": encoder.content_type}, data=encoder)
+                return
             flags = 64 if ephemeral else None
-            reply: InteractionResponse = {'type': 4, 'data': {'content': response, 'flags': flags}}
+            reply = {'type': 4, 'data': {'content': response, 'flags': flags}}
             await self.reply(reply)
 
     async def error(self, extra: str = None):
