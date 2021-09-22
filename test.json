@@ -1,136 +1,71 @@
-{
-  "t": "INTERACTION_CREATE",
-  "s": 3,
-  "op": 0,
-  "d": {
-    "version": 1,
-    "type": 3,
-    "token": "aW50ZXJhY3Rpb246ODgyMzUyMDM0NTkyOTg5Mjg0OlBCejk5Qm9naDkxdXNGR1cwUkhrb2NLdFlGMVU5ZVlFekMwbWtHUkJlSEYyOVBVUWZUMDBhbzJkYnZ4M2hVa2N6U2dyYnpoUk52THA4UWZvbkE0Sk92YVdRSVJ4UmsyTHNUN2JQWGRFMVp5RHBqekk0ejBCeThQcFpTcllWTTRv",
-    "message": {
-      "type": 0,
-      "tts": false,
-      "timestamp": "2021-08-31T19:50:38.993000+00:00",
-      "pinned": false,
-      "mentions": [],
-      "mention_roles": [],
-      "mention_everyone": false,
-      "id": "882351701724651521",
-      "flags": 0,
-      "embeds": [],
-      "edited_timestamp": null,
-      "content": "Pick your roles from the list",
-      "components": [
-        {
-          "type": 1,
-          "components": [
+[
+    {
+        "id": "870658022760939561",
+        "application_id": "870399054964736022",
+        "name": "ping",
+        "description": "pings the bot",
+        "version": "870659661135769702",
+        "default_permission": true,
+        "type": 1
+    },
+    {
+        "id": "870725379822874726",
+        "application_id": "870399054964736022",
+        "name": "jumbo",
+        "description": "resizes emojis",
+        "version": "870725379822874727",
+        "default_permission": true,
+        "type": 1,
+        "options": [
             {
-              "type": 3,
-              "options": [
-                {
-                  "value": "america",
-                  "label": "America",
-                  "emoji": {
-                    "name": "america",
-                    "id": "882341033843781633"
-                  },
-                  "description": "Anyone from anywhere in North America"
-                },
-                {
-                  "value": "international",
-                  "label": "Other",
-                  "emoji": {
-                    "name": "europe_africa",
-                    "id": "882341569628364800"
-                  },
-                  "description": "Anyone from regions outside north america"
-                },
-                {
-                  "value": "furry",
-                  "label": "Furry",
-                  "emoji": {
-                    "name": "cat_smiling",
-                    "id": "882341895492210738"
-                  },
-                  "description": "Anyone who classifies themselves as a furry"
-                },
-                {
-                  "value": "gamer",
-                  "label": "Gamer",
-                  "emoji": {
-                    "name": "game_controller",
-                    "id": "882342191165493359"
-                  },
-                  "description": "Anyone who'd say they play games often"
-                },
-                {
-                  "value": "announcements",
-                  "label": "Announcements",
-                  "emoji": {
-                    "name": "double_exclamation_mark",
-                    "id": "882342299919597578"
-                  },
-                  "description": "Ping role for Server and YouTube announcements"
-                },
-                {
-                  "value": "weeb",
-                  "label": "Weeb",
-                  "emoji": {
-                    "name": "hibiscus",
-                    "id": "882342438973366272"
-                  },
-                  "description": "Anyone interested in anime and classifies themselves as such"
-                }
-              ],
-              "min_values": 1,
-              "max_values": 6,
-              "hash": "",
-              "custom_id": "roles_select"
+                "type": 3,
+                "name": "emoji",
+                "description": "the emoji to resize",
+                "required": true
             }
-          ]
-        }
-      ],
-      "channel_id": "822900347810873405",
-      "author": {
-        "username": "Prismfield Next Generation",
-        "public_flags": 0,
-        "id": "870399054964736022",
-        "discriminator": "9100",
-        "bot": true,
-        "avatar": "a39a18c2084a0e05ca68a68c0ef2a4bb"
-      },
-      "attachments": []
+        ]
     },
-    "member": {
-      "user": {
-        "username": "Midnightfury",
-        "public_flags": 64,
-        "id": "385495978469490702",
-        "discriminator": "6830",
-        "avatar": "a_f8ee60db88cb7bbd0d7b211498f2d435"
-      },
-      "roles": [
-        "827298040318525460"
-      ],
-      "premium_since": null,
-      "permissions": "549755813887",
-      "pending": false,
-      "nick": null,
-      "mute": false,
-      "joined_at": "2021-03-20T18:32:11.562000+00:00",
-      "is_pending": false,
-      "deaf": false,
-      "avatar": null
+    {
+        "id": "871241254392987688",
+        "application_id": "870399054964736022",
+        "name": "purge",
+        "description": "removes the last x messages (cannot remove messages older than 2 weeks)",
+        "version": "871241254392987689",
+        "default_permission": true,
+        "type": 1,
+        "options": [
+            {
+                "type": 4,
+                "name": "amount",
+                "description": "amount of messages to delete",
+                "required": true
+            }
+        ]
     },
-    "id": "882352034592989284",
-    "guild_id": "822900347332198431",
-    "data": {
-      "values": [
-        "furry"
-      ],
-      "custom_id": "roles_select",
-      "component_type": 3
-    },
-    "channel_id": "822900347810873405",
-    "application_id": "870399054964736022"
-  }
-}
+    {
+        "id": "881396546615279616",
+        "application_id": "870399054964736022",
+        "name": "setup",
+        "description": "sets up a server utility",
+        "version": "881396546615279617",
+        "default_permission": true,
+        "type": 1,
+        "options": [
+            {
+                "type": 1,
+                "name": "rules",
+                "description": "creates the rules message"
+            },
+            {
+                "type": 1,
+                "name": "hints",
+                "description": "creates the helpful hints message"
+            },
+            {
+                "type": 1,
+                "name": "roles",
+                "description": "creates the roles message"
+            }
+        ]
+    }
+]

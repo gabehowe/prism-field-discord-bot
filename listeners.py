@@ -12,8 +12,7 @@ bot: User
 command_manager = SlashCommandManager()
 
 
-async def on_ready(data, client):
-    print(data)
+async def on_ready(client):
     global bot
     bot = client.bot
     print('Ready!')
@@ -44,13 +43,13 @@ async def on_interaction_create(data, client):
     if interaction.type == InteractionType.APPLICATION_COMMAND:
         if interaction.data.name == 'ping':
             await ping.on_command(interaction)
-        if interaction.data.name == 'jumbo':
+        elif interaction.data.name == 'jumbo':
             await jumbo.on_command(interaction)
-        if interaction.data.name == 'purge':
+        elif interaction.data.name == 'purge':
             await purge.on_command(interaction, bot)
-        if interaction.data.name == 'setup':
+        elif interaction.data.name == 'setup':
             await setup.on_command(interaction)
-        if interaction.data.name == 'test':
+        elif interaction.data.name == 'test':
             await test.on_command(interaction, client)
 
     if interaction.type == InteractionType.MESSAGE_COMPONENT:

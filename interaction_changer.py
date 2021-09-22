@@ -6,7 +6,7 @@ import websockets
 
 from classes.member import User
 from classes.slashcommandmanager import load_command, SlashCommandManager
-from util import api_call, geturl
+from util import geturl, api_call
 
 parser = argparse.ArgumentParser(description='updates slash command data')
 parser.add_argument('--file', help='the JSON file to send. if GET is used, the file to save the data to', required=True)
@@ -32,22 +32,15 @@ async def login_here():
                         "large_threshold": 250
                     }
                 }))
-                print(data)
             if data['t'] == 'READY':
                 await run_ready(data)
             elif data['op'] == 11:
-                print(data)
-                pass
-            elif data['op'] == 7:
-                # TODO fix that stupid reconnecting thing
-                ws = websockets.connect(f'{await geturl(config["token"])}?v=9&encoding=json')
-                print(data)
                 pass
             else:
                 print(data)
 
 
-with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='utf-8') as configfile:
+with open('C:/Users/gabri/dev/Discord/prism-field-bot-server/config.json', encoding='utf-8') as configfile:
     config = json.load(configfile)
 
 

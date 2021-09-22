@@ -6,6 +6,7 @@ from http.client import HTTPSConnection
 from typing import Optional
 
 import aiohttp
+import requests
 
 from data_models.channel import ChannelType
 
@@ -60,6 +61,7 @@ async def api_call(path, method="GET", **kwargs):
         return json_response
 
 
+
 async def geturl(token: str):
     hostname = 'discord.com'
     connection = HTTPSConnection(hostname)
@@ -93,3 +95,26 @@ async def handle_exceptions(e: DiscordAPIError, interaction):
     else:
         print(f'DiscordAPIError: {e}')
         await log(str(e))
+
+
+def sync_api_call(path, method="GET", **kwargs):
+    defaults = {"headers": {"Authorization": f'Bot {config["token"]}',
+                            "User-Agent": "dBot (https://github.com/gabehowe, 0.1.0)",
+                            "Content-Type": "application/json"}}
+    kwargs = dict(defaults, **kwargs)
+    response = requests.request(method, url + path, **kwargs)
+    try:
+        assert 200 == response.status_code, response.reason
+    except AssertionError:
+        pass
+
+    json_response = response.json()
+    print(json_response)
+    if json_response is not None:
+        if 'retry_after' in json_response:
+            return
+        if 'message' in json_response:
+            print(json_response)
+            raise DiscordAPIError(json_response.get('code'), json_response.get('message'))
+
+    return json_response

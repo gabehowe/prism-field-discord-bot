@@ -79,7 +79,7 @@ class Client:
             for i in guilds:
                 guild = Guild(i)
                 self.guilds[guild.id] = guild
-            await on_ready(data, self)
+            await on_ready(self)
         elif data['t'] == 'GUILD_CREATE':
             guild = Guild(data['d'])
             perms = self.guilds[guild.id].permissions
@@ -90,6 +90,12 @@ class Client:
         elif data['t'] == 'INTERACTION_CREATE':
             await on_interaction_create(data, self)
         elif data['t'] == 'GUILD_MEMBER_UPDATE':
+            pass
+        elif data['t'] == 'MESSAGE_UPDATE':
+            pass
+        elif data['t'] == 'MESSAGE_DELETE':
+            pass
+        elif data['t'] == 'MESSAGE_REACTION_ADD':
             pass
         elif data['op'] == 11:
             pass

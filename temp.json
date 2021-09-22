@@ -1,12 +1,16 @@
 {
-    "name": "test",
-    "description": "tests a feature",
+    "id": "871241254392987688",
+    "application_id": "870399054964736022",
+    "name": "purge",
+    "description": "removes the last x messages (cannot remove messages older than 2 weeks)",
+    "version": "871241254392987689",
+    "default_permission": true,
     "type": 1,
     "options": [
         {
-            "type": 3,
-            "name": "feature",
-            "description": "feature to test",
+            "type": 4,
+            "name": "amount",
+            "description": "amount of messages to delete",
             "required": true
         }
     ]
