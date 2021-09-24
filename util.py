@@ -8,6 +8,7 @@ from typing import Optional
 import aiohttp
 import requests
 
+from colors import printc, Color
 from data_models.channel import ChannelType
 
 url = "https://discord.com/api/v9"
@@ -32,8 +33,14 @@ async def log(string: str):
                                     ChannelType.GUILD_PRIVATE_THREAD]:
         _update_config()
         log_id = config['log_channel_id']
-        return await api_call(f'/channels/{log_id}/messages', "POST", json={"content": str(
-            f'[<t:{math.floor(datetime.now().timestamp())}:D><t:{math.floor(datetime.now().timestamp())}:T>] {string}')})
+        try:
+            return await api_call(f'/channels/{log_id}/messages', "POST", json={"content": str(
+                f'[<t:{math.floor(datetime.now().timestamp())}:D><t:{math.floor(datetime.now().timestamp())}:T>] {string}')})
+        except DiscordAPIError as e:
+            if e.code == 50013:
+                printc(Color.RED, "Missing Permissions")
+            else:
+                raise
 
 
 async def api_call(path, method="GET", **kwargs):
