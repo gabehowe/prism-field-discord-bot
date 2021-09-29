@@ -26,7 +26,7 @@ class Client:
         self.resume = False
         self.events_handler: Optional[Coroutine[Any, Any, None]] = None
         self.token = None
-        self.heartbeat_handler = None
+        self.heartbeat_handler: Optional[asyncio.Task] = None
         self.guilds: Dict[str, Guild] = {}
         self.bot: Optional[User] = None
         self.socket: Optional[ClientWebSocketResponse] = None
@@ -118,6 +118,7 @@ class Client:
         reconnect_str = 'Reconnecting and resuming...' if resume else 'Reconnecting...'
         await util.log(reconnect_str)
         self.reconnect = False
+        self.heartbeat_handler.cancel()
         await self.login()
         await util.log('Reconnected.' if not resume else 'Reconnected and resumed.')
         if resume:

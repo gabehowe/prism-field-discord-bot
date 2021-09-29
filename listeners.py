@@ -32,8 +32,8 @@ async def on_message_create(data):
     if random.randint(0, 1000) == 1:
         await message.channel.send("ew " + (
             message.member.nick if message.member.nick is not None else message.author.username))
-    if 'owo' in message.content or 'uwu' in message.content:
-        if random.randint(0, 9) == 1:
+    if 'owo' in message.content.lower() or 'uwu' in message.content.lower():
+        if random.randint(1, 5) == 1:
             await message.channel.send("There is no shred of that here.")
     if '!!stop!!' in message.content and message.author.id in util.config.get('stop_perms'):
         raise StopCommandException

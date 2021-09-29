@@ -1,9 +1,6 @@
 {
-    "id": "871241254392987688",
-    "application_id": "870399054964736022",
-    "name": "purge",
-    "description": "removes the last x messages (cannot remove messages older than 2 weeks)",
-    "version": "871241254392987689",
+    "name": "bulg",
+    "description": "translates the given message to bulgarian",
     "default_permission": true,
     "type": 1,
     "options": [

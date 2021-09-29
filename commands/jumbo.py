@@ -8,7 +8,7 @@ from classes.interaction import Interaction
 
 async def on_command(interaction: Interaction):
     try:
-        emoji_str = str(interaction.data.options[0].value)
+        emoji_str = str(interaction.data.options[0].value).strip()
         if emoji_str in UNICODE_EMOJI_ENGLISH.keys():
             point_list = []
             final_point = ''
