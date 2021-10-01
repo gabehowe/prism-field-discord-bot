@@ -18,7 +18,7 @@ config: dict
 
 def _update_config():
     global config
-    with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='utf-8') as configfile:
+    with open('./config.json', encoding='utf-8') as configfile:
         config = json.load(configfile)
 
 

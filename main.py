@@ -8,7 +8,7 @@ import util
 from classes.client import Client
 from colors import Color, printc
 
-with open('C:/Users/gabri/dev/Discord/prism-field-bot/config.json', encoding='utf-8') as configfile:
+with open('./config.json', encoding='utf-8') as configfile:
     config = json.load(configfile)
 
 

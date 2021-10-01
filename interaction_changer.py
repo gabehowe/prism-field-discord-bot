@@ -40,7 +40,7 @@ async def login_here():
                 print(data)
 
 
-with open('C:/Users/gabri/dev/Discord/prism-field-bot-server/config.json', encoding='utf-8') as configfile:
+with open('./config.json', encoding='utf-8') as configfile:
     config = json.load(configfile)
 
 
