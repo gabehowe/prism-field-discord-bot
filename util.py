@@ -7,6 +7,7 @@ from typing import Optional
 
 import aiohttp
 import requests
+from aiohttp import client_exceptions
 
 from colors import printc, Color
 from data_models.channel import ChannelType
@@ -49,23 +50,27 @@ async def api_call(path, method="GET", **kwargs):
                             "User-Agent": "dBot (https://github.com/gabehowe, 0.1.0)",
                             "Content-Type": "application/json"}}
     kwargs = dict(defaults, **kwargs)
-    async with aiohttp.ClientSession() as session:
-        async with session.request(method, url + path, **kwargs) as response:
-            try:
-                assert 200 == response.status, response.reason
-            except AssertionError:
-                pass
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.request(method, url + path, **kwargs) as response:
+                try:
+                    assert 200 == response.status, response.reason
+                except AssertionError:
+                    pass
 
-            json_response = await response.json(content_type=response.content_type)
-            if json_response is not None:
-                if 'retry_after' in json_response:
-                    await asyncio.sleep(json_response['retry_after'])
-                    return
-                if 'message' in json_response:
-                    print(json_response)
-                    raise DiscordAPIError(json_response.get('code'), json_response.get('message'))
+                json_response = await response.json(content_type=response.content_type)
+                if json_response is not None:
+                    if 'retry_after' in json_response:
+                        await asyncio.sleep(json_response['retry_after'])
+                        return
+                    if 'message' in json_response:
+                        print(json_response)
+                        raise DiscordAPIError(json_response.get('code'), json_response.get('message'))
 
-        return json_response
+            return json_response
+    except client_exceptions.ClientConnectorError:
+        printc(Color.RED, 'ClientConnectorError (Probably caused by lack of internet connection).')
+        pass
 
 
 

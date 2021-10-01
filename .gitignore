@@ -140,3 +140,5 @@ cython_debug/
 
 config.json
 /emojis/
+test.json
+temp.json
