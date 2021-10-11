@@ -1,4 +1,4 @@
-from typing import Tuple, Union
+from typing import Tuple, Union, Optional
 
 import data_models.channel
 from data_models.channel import ChannelType
@@ -13,13 +13,13 @@ class Channel:
         'member_count', 'thread_metadata', 'member', 'default_auto_archive_duration', 'permissions')
 
     def __init__(self, data: data_models.channel.Channel):
-        self.id = data.get('id')
-        self.type = data_models.channel.ChannelType(data.get('type'))
-        self.guild_id = data.get('guild_id')
-        self.position = data.get('position')
-        self.permission_overwrites = data.get('permission_overwrites')
-        self.name = data.get('name')
-        self.topic = data.get('topic')
+        self.id: str = data.get('id')
+        self.type: ChannelType = data_models.channel.ChannelType(data.get('type'))
+        self.guild_id: Optional[str] = data.get('guild_id')
+        self.position: Optional[int] = data.get('position')
+        self.permission_overwrites: Optional[list] = data.get('permission_overwrites')
+        self.name: Optional[str] = data.get('name')
+        self.topic: Optional[str] = data.get('topic')
         self.nsfw = data.get('nsfw')
         self.last_message_id = data.get('last_message_id')
         self.bitrate = data.get('bitrate')
@@ -39,6 +39,15 @@ class Channel:
         self.member = data.get('member')
         self.default_auto_archive_duration = data.get('default_auto_archive_duration')
         self.permissions = data.get('permissions')
+        """Computed permissions for the invoking user in the channel, including overwrites, only included when part of the resolved data received on a slash command interaction"""
+
+    async def modify_channel(self, name=None, icon: bytes = None):
+        json_object = {'name': name, 'icon': icon}
+        await api_call(f'/channels/{self.id}', 'PATCH', json=json_object)
+        if name is not None:
+            self.name = name
+        if icon is not None:
+            self.icon = icon
 
 
 class TextChannel(Channel):

@@ -12,7 +12,8 @@ from classes.channel import TextChannel
 from classes.guild import Guild
 from classes.member import User
 from colors import printc, Color
-from listeners import on_ready, on_message_create, on_interaction_create
+from listeners import on_ready, on_message_create, on_interaction_create, on_guild_member_add, on_guild_create, \
+    on_guild_member_remove
 from util import geturl
 
 
@@ -85,6 +86,11 @@ class Client:
             perms = self.guilds[guild.id].permissions
             self.guilds[guild.id] = guild
             self.guilds[guild.id].permissions = perms
+            await on_guild_create(data)
+        elif data['t'] == 'GUILD_MEMBER_ADD':
+            await on_guild_member_add(data)
+        elif data['t'] == 'GUILD_MEMBER_REMOVE':
+            await on_guild_member_remove(data)
         elif data['t'] == 'MESSAGE_CREATE':
             await on_message_create(data)
         elif data['t'] == 'INTERACTION_CREATE':

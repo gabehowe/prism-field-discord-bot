@@ -1,11 +1,15 @@
 import json
+import os.path
+from typing import Dict
 
 import util
+from classes.channel import get_channel
 from classes.guild import Guild
 from classes.interaction import Interaction
 from classes.member import GuildMember
 from classes.permissions import Permissions
 from classes.role import Role
+from util import config
 
 
 async def on_command(interaction: Interaction):
@@ -43,6 +47,35 @@ async def on_command(interaction: Interaction):
                 roles = json.load(file)
                 await interaction.channel.send(roles)
             await interaction.reply('Setup successful.', True)
+        if subcommand == 'membercount':
+            if Permissions.MANAGE_CHANNELS not in interaction.bot.permissions_list:
+                await interaction.no_permission_bot(Permissions.MANAGE_CHANNELS)
+                return
+            channel_id = interaction.data.options[0].options[0].value
+            channel = await get_channel(channel_id)
+            member_count = len(await interaction.guild.list_members(limit=1000))
+            await channel.modify_channel(name=f'Member Count: {member_count}')
+            if os.path.exists(f'{config["dir"]}\\bot_data\\member_channels.json'):
+                current_file: Dict[str, dict] = json.load(open(f'{config["dir"]}\\bot_data\\member_channels.json'))
+
+                with open(f'{config["dir"]}\\bot_data\\member_channels.json', 'w+') as file:
+                    if current_file.get(interaction.guild.id) is not None:
+                        member_list_obj = current_file.get(interaction.guild_id)
+                        member_list_obj["count_channel_id"] = channel_id
+                        member_list_obj["member_count"] = member_count
+                        current_file[interaction.guild.id] = member_list_obj
+
+                    else:
+                        current_file[interaction.guild.id] = {"member_count": member_count,
+                                                              "count_channel_id": channel_id}
+                    file.write(json.dumps(current_file))
+
+            else:
+                with open(f'{config["dir"]}\\bot_data\\member_channels.json', 'x+') as file:
+                    member_channels = {
+                        interaction.guild.id: {"member_count": member_count, "count_channel_id": channel_id}}
+                file.write(json.dumps(member_channels))
+            await interaction.reply(f'Initialized member count for {channel.type.name} channel <#{channel_id}>', True)
     except Exception as e:
         if isinstance(e, util.DiscordAPIError):
             # noinspection PyTypeChecker

@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import json
+import sys
 
 import websockets
 
@@ -37,7 +38,7 @@ async def login_here():
             elif data['op'] == 11:
                 pass
             else:
-                print(data)
+                pass
 
 
 with open('./config.json', encoding='utf-8') as configfile:
@@ -48,9 +49,11 @@ async def run_ready(data):
     args = parser.parse_args()
     is_guild = False if args.guild_id is None else True
     bot = User(data['d']['user'])
-    file = json.loads(open(args.file).read())
-
     method = args.method
+    if method == "PATCH" or method == "DELETE":
+        file = json.loads(open(args.file).read())
+    else:
+        file = None
 
     if is_guild:
         if method == 'DELETE':
@@ -62,11 +65,16 @@ async def run_ready(data):
                                          method, json=file)
             print(json_object)
         elif method == 'GET':
-            json_object = await api_call(f'/applications/{bot.id}/guilds/{str(args.guild_id)}/commands/{args.cmd_id}',
-                                         method)
+            if args.cmd_id is not None:
+                json_object = await api_call(
+                    f'/applications/{bot.id}/guilds/{str(args.guild_id)}/commands/{args.cmd_id}',
+                    method)
+            else:
+                json_object = await api_call(f'/applications/{bot.id}/guilds/{str(args.guild_id)}/commands',
+                                             method)
             print(json_object)
-            with open(args.file, 'w+x') as e:
-                e.write(json_object)
+            with open(args.file, 'w+') as e:
+                e.write(json.dumps(json_object))
         elif method == 'POST':
             json_object = await api_call(f'/applications/{bot.id}/guilds/{str(args.guild_id)}/commands',
                                          method, json=file)
@@ -81,15 +89,20 @@ async def run_ready(data):
                                          method, json=file)
             print(json_object)
         elif method == 'GET':
-            json_object = await api_call(f'/applications/{bot.id}/commands/{args.cmd_id}',
-                                         method)
+            if args.cmd_id is not None:
+                json_object = await api_call(f'/applications/{bot.id}/commands/{args.cmd_id}',
+                                             method)
+            else:
+                json_object = await api_call(f'/applications/{bot.id}/commands',
+                                             method)
             print(json_object)
-            with open(args.file, 'w+x') as e:
-                e.write(json_object)
+            with open(args.file, 'w+') as e:
+                e.write(json.dumps(json_object))
         elif method == 'POST':
             cmd = await load_command(file)
 
             print(await SlashCommandManager().register_command(cmd, bot))
+        sys.exit(1)
 
 
 asyncio.get_event_loop().run_until_complete(login_here())

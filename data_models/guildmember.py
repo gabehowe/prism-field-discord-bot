@@ -9,6 +9,7 @@ class _GuildMemberOptional(TypedDict, total=False):
     premium_since: Optional[str]
     pending: bool
     permissions: str
+    guild_id: str
 
 
 class GuildMember(_GuildMemberOptional):

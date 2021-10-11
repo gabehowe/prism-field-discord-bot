@@ -1,14 +1,39 @@
 {
-    "name": "bulg",
-    "description": "translates the given message to bulgarian",
+    "id": "881396546615279616",
+    "application_id": "870399054964736022",
+    "name": "setup",
+    "description": "sets up a server utility",
+    "version": "881396546615279617",
     "default_permission": true,
     "type": 1,
     "options": [
         {
-            "type": 4,
-            "name": "amount",
-            "description": "amount of messages to delete",
-            "required": true
+            "type": 1,
+            "name": "rules",
+            "description": "creates the rules message"
+        },
+        {
+            "type": 1,
+            "name": "hints",
+            "description": "creates the helpful hints message"
+        },
+        {
+            "type": 1,
+            "name": "roles",
+            "description": "creates the roles message"
+        },
+        {
+            "type": 1,
+            "name": "membercount",
+            "description": "initializes the member counting system",
+            "options": [
+                {
+                    "type": 7,
+                    "name": "channel",
+                    "description": "the channel to use to count",
+                    "required": true
+                }
+            ]
         }
     ]
 }

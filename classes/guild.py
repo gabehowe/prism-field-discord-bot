@@ -1,6 +1,7 @@
 from typing import List
 
 import data_models.guild
+from classes.member import GuildMember
 from classes.role import Role
 from util import api_call
 
@@ -65,6 +66,18 @@ class Guild:
 
     async def add_role(self, name: str = None, permissions: str = None, color: int = None, hoist: bool = None,
                        mentionable: bool = None):
-        await api_call(f'/guilds/{self.id}/roles', 'POST',
-                       json={'name': name, 'permissions': permissions, 'color': color, 'hoist': hoist,
-                             'mentionable': mentionable})
+        json_role = await api_call(f'/guilds/{self.id}/roles', 'POST',
+                                   json={'name': name, 'permissions': permissions, 'color': color, 'hoist': hoist,
+                                         'mentionable': mentionable})
+        role = Role(json_role)
+        self.roles.append(role)
+        return role
+
+    async def list_members(self, limit=1, after='0') -> List[GuildMember]:
+        """Returns a list of :py:class:`classes.member.GuildMember` objects"""
+        members = await api_call(f'/guilds/{self.id}/members?limit={limit}&after={after}', 'GET')
+        member_list = []
+        if isinstance(members, list):
+            for i in members:
+                member_list.append(GuildMember(i))
+        return member_list

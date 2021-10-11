@@ -11,6 +11,7 @@ from util import api_call
 
 
 class GuildMember:
+    """Guild Member object"""
     def __init__(self, data: guildmember.GuildMember):
         if 'user' in data:
             self.user = User(data.get('user'))
@@ -24,6 +25,7 @@ class GuildMember:
         self.deaf = data.get('deaf')
         self.mute = data.get('mute')
         self.pending = data.get('pending')
+        self.guild_id = data.get('guild_id')
         self.permissions_int = data.get('permissions')
         if self.permissions_int is not None:
             self.permissions_int = int(self.permissions_int)

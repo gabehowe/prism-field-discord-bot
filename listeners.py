@@ -1,8 +1,11 @@
+import json
 import random
 
 import util
+from classes.channel import get_channel
+from classes.guild import Guild
 from classes.interaction import Interaction
-from classes.member import User
+from classes.member import User, GuildMember
 from classes.message import Message
 from classes.slashcommandmanager import SlashCommandManager
 from colors import printc, Color
@@ -62,6 +65,48 @@ async def on_interaction_create(data, client):
             await setup.on_select_menu(interaction)
         if interaction.data.custom_id == 'reset_roles':
             await setup.on_reset_roles(interaction)
+
+
+async def on_guild_member_add(data):
+    member = GuildMember(data['d'])
+    with open('bot_data/member_channels.json', 'r+') as file:
+        json_file: dict = json.load(file)
+        if json_file.get(member.guild_id) is not None:
+            json_file[member.guild_id]['member_count'] += 1
+            channel_id = json_file[member.guild_id]['count_channel_id']
+            channel = await get_channel(channel_id)
+            if channel is not None:
+                await channel.modify_channel(name=f'Member Count: {json_file[member.guild_id]["member_count"]}')
+    with open('bot_data/member_channels.json', 'w+') as file:
+        file.write(json.dumps(json_file))
+
+
+async def on_guild_create(data):
+    guild = Guild(data['d'])
+    with open('bot_data/member_channels.json', 'r+') as file:
+        json_file: dict = json.load(file)
+        if json_file.get(guild.id) is not None:
+            json_file[guild.id]['member_count'] = guild.member_count
+            channel_id = json_file[guild.id]['count_channel_id']
+            channel = await get_channel(channel_id)
+            if channel is not None:
+                await channel.modify_channel(name=f'Member Count: {json_file[guild.id]["member_count"]}')
+    with open('bot_data/member_channels.json', 'w+') as file:
+        file.write(json.dumps(json_file))
+
+
+async def on_guild_member_remove(data):
+    member = GuildMember(data['d'])
+    with open('bot_data/member_channels.json', 'r+') as file:
+        json_file: dict = json.load(file)
+        if json_file.get(member.guild_id) is not None:
+            json_file[member.guild_id]['member_count'] -= 1
+            channel_id = json_file[member.guild_id]['count_channel_id']
+            channel = await get_channel(channel_id)
+            if channel is not None:
+                await channel.modify_channel(name=f'Member Count: {json_file[member.guild_id]["member_count"]}')
+    with open('bot_data/member_channels.json', 'w+') as file:
+        file.write(json.dumps(json_file))
 
 
 class StopCommandException(BaseException):

@@ -64,6 +64,8 @@ async def api_call(path, method="GET", **kwargs):
                         await asyncio.sleep(json_response['retry_after'])
                         return
                     if 'message' in json_response:
+                        if json_response.get('code') == 10003:
+                            return None
                         print(json_response)
                         raise DiscordAPIError(json_response.get('code'), json_response.get('message'))
 

@@ -1,71 +1,24 @@
-[
-    {
-        "id": "870658022760939561",
-        "application_id": "870399054964736022",
-        "name": "ping",
-        "description": "pings the bot",
-        "version": "870659661135769702",
-        "default_permission": true,
-        "type": 1
-    },
-    {
-        "id": "870725379822874726",
-        "application_id": "870399054964736022",
-        "name": "jumbo",
-        "description": "resizes emojis",
-        "version": "870725379822874727",
-        "default_permission": true,
-        "type": 1,
-        "options": [
-            {
-                "type": 3,
-                "name": "emoji",
-                "description": "the emoji to resize",
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "871241254392987688",
-        "application_id": "870399054964736022",
-        "name": "purge",
-        "description": "removes the last x messages (cannot remove messages older than 2 weeks)",
-        "version": "871241254392987689",
-        "default_permission": true,
-        "type": 1,
-        "options": [
-            {
-                "type": 4,
-                "name": "amount",
-                "description": "amount of messages to delete",
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "881396546615279616",
-        "application_id": "870399054964736022",
-        "name": "setup",
-        "description": "sets up a server utility",
-        "version": "881396546615279617",
-        "default_permission": true,
-        "type": 1,
-        "options": [
-            {
-                "type": 1,
-                "name": "rules",
-                "description": "creates the rules message"
-            },
-            {
-                "type": 1,
-                "name": "hints",
-                "description": "creates the helpful hints message"
-            },
-            {
-                "type": 1,
-                "name": "roles",
-                "description": "creates the roles message"
-            }
-        ]
+{
+    "t": "GUILD_MEMBER_ADD",
+    "s": 7,
+    "op": 0,
+    "d": {
+        "user": {
+            "username": "AntiPrismatic",
+            "public_flags": 256,
+            "id": "470999454602756098",
+            "discriminator": "9109",
+            "avatar": "8ca89be51164bc8a4e9b1ba733d1194f"
+        },
+        "roles": [],
+        "premium_since": null,
+        "pending": false,
+        "nick": null,
+        "mute": false,
+        "joined_at": "2021-10-11T19:46:51.144118+00:00",
+        "is_pending": false,
+        "guild_id": "822900347332198431",
+        "deaf": false,
+        "avatar": null
     }
-]
+}

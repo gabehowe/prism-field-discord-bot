@@ -2,6 +2,7 @@ import enum
 
 
 class Permissions(enum.IntEnum):
+    """Permissions Enum"""
     CREATE_INSTANT_INVITE = 0x1
     KICK_MEMBERS = 0x2
     BAN_MEMBERS = 0x4

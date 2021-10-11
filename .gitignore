@@ -142,3 +142,6 @@ config.json
 /emojis/
 test.json
 temp.json
+test.txt
+commands.txt
+bot_data/member_channels.json
