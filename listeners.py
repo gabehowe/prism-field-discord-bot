@@ -1,4 +1,5 @@
 import json
+import os
 import random
 
 import util
@@ -69,6 +70,9 @@ async def on_interaction_create(data, client):
 
 async def on_guild_member_add(data):
     member = GuildMember(data['d'])
+    if not os.path.exists(f'{util.config["dir"]}\\bot_data\\member_channels.json'):
+        with open('bot_data/member_channels.json', 'x+') as new_file:
+            new_file.write('{}')
     with open('bot_data/member_channels.json', 'r+') as file:
         json_file: dict = json.load(file)
         if json_file.get(member.guild_id) is not None:
@@ -83,6 +87,9 @@ async def on_guild_member_add(data):
 
 async def on_guild_create(data):
     guild = Guild(data['d'])
+    if not os.path.exists(f'{util.config["dir"]}\\bot_data\\member_channels.json'):
+        with open('bot_data/member_channels.json', 'x+') as new_file:
+            new_file.write('{}')
     with open('bot_data/member_channels.json', 'r+') as file:
         json_file: dict = json.load(file)
         if json_file.get(guild.id) is not None:
@@ -97,6 +104,9 @@ async def on_guild_create(data):
 
 async def on_guild_member_remove(data):
     member = GuildMember(data['d'])
+    if not os.path.exists(f'{util.config["dir"]}\\bot_data\\member_channels.json'):
+        with open('bot_data/member_channels.json', 'x+') as new_file:
+            new_file.write('{}')
     with open('bot_data/member_channels.json', 'r+') as file:
         json_file: dict = json.load(file)
         if json_file.get(member.guild_id) is not None:

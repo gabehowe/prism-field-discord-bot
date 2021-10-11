@@ -75,7 +75,6 @@ async def api_call(path, method="GET", **kwargs):
         pass
 
 
-
 async def geturl(token: str):
     hostname = 'discord.com'
     connection = HTTPSConnection(hostname)
