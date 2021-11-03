@@ -8,10 +8,12 @@ from classes.guild import Guild
 from classes.interaction import Interaction
 from classes.member import User, GuildMember
 from classes.message import Message
+from classes.presence import Presence, Activity
 from classes.slashcommandmanager import SlashCommandManager
 from colors import printc, Color
 from commands import ping, jumbo, purge, setup, test
 from data_models.interaction import InteractionType
+from data_models.presence import Status, ActivityType
 from util import log
 
 bot: User
@@ -21,6 +23,10 @@ command_manager = SlashCommandManager()
 async def on_ready(client):
     global bot
     bot = client.bot
+    activity = Activity({'name': 'AntiPrism Vlogs on Youtube', 'type': ActivityType.WATCHING,
+                         'url': 'https://www.youtube.com/channel/UClmGXpXQnF5P7h3YxcYl_wQ?'})
+    presence = Presence({'since': None, 'status': Status.ONLINE, 'afk': False, 'activities': [activity]})
+    await client.update_presence(presence)
     printc(Color.GREEN, 'Ready!')
     await command_manager.load_commands(bot)
     with open('commands.txt', 'w+') as commands_file:

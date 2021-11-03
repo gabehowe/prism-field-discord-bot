@@ -1,8 +1,28 @@
+from enum import IntEnum
 from typing import TypedDict, Optional, List
 
 from data_models.channel import Channel
 from data_models.guildmember import GuildMember
 from data_models.roles import Role
+
+
+class VerificationLevel(IntEnum):
+    NONE = 0
+    LOW = 1
+    MEDIUM = 2
+    HIGH = 3
+    VERY_HIGH = 4
+
+
+class DefaultMessageNotificationLevel(IntEnum):
+    ALL_MESSAGES = 0
+    ONLY_MENTIONS = 1
+
+
+class ExplicitContentFilterLevel(IntEnum):
+    DISABLED = 0
+    MEMBERS_WITHOUT_ROLES = 1
+    ALL_MEMBERS = 2
 
 
 class _GuildOptional(TypedDict, total=False):
@@ -41,7 +61,7 @@ class Guild(_GuildOptional):
     owner_id: str
     afk_channel_id: Optional[str]
     afk_timeout: int
-    verification_level: int
+    verification_level: VerificationLevel
     default_message_notifications: int
     explicit_content_filter: int
     roles: List[Role]
@@ -59,3 +79,16 @@ class Guild(_GuildOptional):
     preferred_locale: str
     public_updates_channel_id: Optional[str]
     nsfw_level: int
+
+
+class GuildPreview(TypedDict):
+    id: str
+    name: str
+    icon: Optional[str]
+    splash: Optional[str]
+    discovery_splash: Optional[str]
+    emojis: List[dict]  # TODO add emoji object
+    features: List[str]
+    approximate_member_count: int
+    approximate_presence_count: int
+    description: Optional[str]

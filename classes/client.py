@@ -144,6 +144,11 @@ class Client:
             await asyncio.sleep(interval / 1000)
             await ws.send_str(json.dumps({"op": 1, "d": self.last_sequence}))
 
+    async def update_presence(self, presence):
+        activities = [{'name': i.name, 'type': i.type} for i in presence.activities]
+        await self.socket.send_str(json.dumps({'op': 3, 'd': {'since': presence.since, 'activities': activities,
+                                                              'status': presence.status, 'afk': presence.afk}}))
+
 
 class WebSocketClosure(Exception):
     pass

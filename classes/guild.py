@@ -1,9 +1,24 @@
-from typing import List
+from typing import List, Optional
 
 import data_models.guild
+from classes.channel import Channel
 from classes.member import GuildMember
 from classes.role import Role
-from util import api_call
+from util import api_call, DiscordAPIError
+
+
+class GuildPreview:
+    def __init__(self, data: data_models.guild.GuildPreview):
+        self.id: str = data.get('id')
+        self.name: str = data.get('name')
+        self.icon: Optional[str] = data.get('icon')
+        self.splash: Optional[str] = data.get('splash')
+        self.discovery_splash: Optional[str] = data.get('discovery_splash')
+        self.emojis: List[dict] = data.get('emojis')
+        self.features: List[str] = data.get('features')
+        self.approximate_member_count: int = data.get('approximate_member_count')
+        self.approximate_presence_count: int = data.get('approximate_presence_count')
+        self.description: Optional[str] = data.get('description')
 
 
 class Guild:
@@ -81,3 +96,102 @@ class Guild:
             for i in members:
                 member_list.append(GuildMember(i))
         return member_list
+
+    async def get_preview(self):
+        try:
+            response = await api_call(f'/guild/{self.id}', 'GET')
+        except DiscordAPIError as e:
+            return None
+        return GuildPreview(response)
+
+    async def modify(self,
+                     name: str = None,
+                     region: Optional[str] = None,
+                     verification_level: data_models.guild.VerificationLevel = None,
+                     default_message_notifications: data_models.guild.DefaultMessageNotificationLevel = None,
+                     explicit_content_filter: data_models.guild.ExplicitContentFilterLevel = None,
+                     afk_channel_id: Optional[str] = None,
+                     afk_timeout: int = None,
+                     icon: Optional[str] = None,
+                     owner_id: str = None,
+                     splash: Optional[str] = None,
+                     discovery_splash: Optional[str] = None,
+                     banner: Optional[str] = None,
+                     system_channel_id: Optional[str] = None,
+                     system_channel_flags: int = None,
+                     rules_channel_id: Optional[str] = None,
+                     public_updates_channel_id: Optional[str] = None,
+                     preferred_locale: Optional[str] = None,
+                     features: List[str] = None,
+                     description: Optional[str] = None,
+                     ):
+        options = {}
+        if name is not None:
+            options['name'] = name
+        if region is not None:
+            options['region'] = region
+        if verification_level is not None:
+            options['verification_level'] = verification_level
+        if default_message_notifications is not None:
+            options['default_message_notifications'] = default_message_notifications
+        if explicit_content_filter is not None:
+            options['explicit_content_filter'] = explicit_content_filter
+        if afk_channel_id is not None:
+            options['afk_channel_id'] = afk_channel_id
+        if afk_timeout is not None:
+            options['afk_timeout'] = afk_timeout
+        if icon is not None:
+            options['icon'] = icon
+        if owner_id is not None:
+            options['owner_id'] = owner_id
+        if splash is not None:
+            options['splash'] = splash
+        if discovery_splash is not None:
+            options['discovery_splash'] = discovery_splash
+        if banner is not None:
+            options['banner'] = banner
+        if system_channel_id is not None:
+            options['system_channel_id'] = system_channel_id
+        if system_channel_flags is not None:
+            options['system_channel_flags'] = system_channel_flags
+        if rules_channel_id is not None:
+            options['rules_channel_id'] = rules_channel_id
+        if public_updates_channel_id is not None:
+            options['public_channel_id'] = public_updates_channel_id
+        if preferred_locale is not None:
+            options['preferred_locale'] = preferred_locale
+        if features is not None:
+            options['features'] = features
+        if description is not None:
+            options['description'] = description
+
+        try:
+            response = await api_call(f'/guild/{self.id}', 'PATCH', json=options)
+        except DiscordAPIError as e:
+            return None
+        return Guild(response)
+
+    async def delete(self):
+        try:
+            response = await api_call(f'/guild/{self.id}', 'DELETE')
+        except DiscordAPIError as e:
+            return None
+        return response
+
+    async def get_channels(self):
+        try:
+            response = await api_call(f'/guild/{self.id}/channels', 'GET')
+        except DiscordAPIError as e:
+            return None
+        channels = []
+        for i in response:
+            channels.append(Channel(i))
+        return channels
+
+
+async def get_guild(guild_id: id) -> Optional[Guild]:
+    try:
+        response = await api_call(f'/guild/{guild_id}', 'GET')
+    except DiscordAPIError as e:
+        return None
+    return Guild(response)
