@@ -1,6 +1,7 @@
-from typing import TypedDict, Optional, Any, Union
+from typing import TypedDict, Optional, Union
 
 import data_models.user
+from data_models.channel import Channel
 from data_models.guildmember import GuildMember
 
 
@@ -17,8 +18,8 @@ class _MessageOptional(TypedDict, total=False):
     message_reference: dict  # TODO make a message reference object
     flags: int
     referenced_message: dict
-    interaction: dict  # TODO make a interaction data type
-    thread: dict  # TODO make a channel object
+    interaction: dict
+    thread: Channel
     components: list
     sticker_items: list
     stickers: list

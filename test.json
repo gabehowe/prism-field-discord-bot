@@ -1,84 +1,36 @@
-[
-    {
-        "id": "870658022760939561",
-        "application_id": "870399054964736022",
-        "name": "ping",
-        "description": "pings the bot",
-        "version": "890219017627893790",
-        "default_permission": true,
-        "type": 1
-    },
-    {
-        "id": "870725379822874726",
-        "application_id": "870399054964736022",
-        "name": "jumbo",
-        "description": "resizes emojis",
-        "version": "890219096698916896",
-        "default_permission": true,
-        "type": 1,
-        "options": [
-            {
-                "type": 3,
-                "name": "emoji",
-                "description": "the emoji to resize",
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "871241254392987688",
-        "application_id": "870399054964736022",
-        "name": "purge",
-        "description": "removes the last x messages (cannot remove messages older than 2 weeks)",
-        "version": "890218885805133894",
-        "default_permission": true,
-        "type": 1,
-        "options": [
-            {
-                "type": 4,
-                "name": "amount",
-                "description": "amount of messages to delete",
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "881396546615279616",
-        "application_id": "870399054964736022",
-        "name": "setup",
-        "description": "sets up a server utility",
-        "version": "897239962649526312",
-        "default_permission": true,
-        "type": 1,
-        "options": [
+{
+    "type": 9,
+    "data": {
+        "title": "the wonderful world of space",
+        "custom_id": "id",
+        "components": [
             {
                 "type": 1,
-                "name": "rules",
-                "description": "creates the rules message"
-            },
-            {
-                "type": 1,
-                "name": "hints",
-                "description": "creates the helpful hints message"
-            },
-            {
-                "type": 1,
-                "name": "roles",
-                "description": "creates the roles message"
-            },
-            {
-                "type": 1,
-                "name": "membercount",
-                "description": "initializes the member counting system",
-                "options": [
+                "components": [
                     {
-                        "type": 7,
-                        "name": "channel",
-                        "description": "the channel to use to count",
-                        "required": true
+                        "type": 4,
+                        "custom_id": "name",
+                        "style": 1,
+                        "label": "name",
+                        "min_length": 1,
+                        "max_length": 4000,
+                        "required": false,
+                        "value": "placeholder",
+                        "placeholder": "placeholder"
+                    }
+                ]
+            },
+            {
+                "type": 1,
+                "components": [
+                    {
+                        "type": 2,
+                        "style": 3,
+                        "label": "jamison",
+                        "disabled": false
                     }
                 ]
             }
         ]
     }
-]
+}

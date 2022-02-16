@@ -1,6 +1,7 @@
 import warnings
 from typing import Optional, List
 
+from classes.component import Component, ActionRow, Button, SelectMenu, TextInput
 from classes.member import User
 from data_models.interaction import ApplicationCommandInteractionData, ApplicationCommandInteractionDataOption
 from util import api_call
@@ -39,6 +40,21 @@ class ApplicationCommandData:
         self.custom_id = data.get('custom_id')
         self.component_type = data.get('component_type')
         self.values: Optional[List[str]] = data.get('values')
+        self.components: Optional[List[Component]] = []
+        if 'components' in data:
+            for i in data.get('components'):
+                if i.get('type') == 1:  # 1 is Action Row
+                    row = ActionRow()
+                    for e in i.get('components'):
+                        component = None
+                        if e.get('type') == 2:
+                            component = Button('blorby', 1).from_json(e)
+                        elif e.get('type') == 3:
+                            component = SelectMenu('ahwo').from_json(e)
+                        elif e.get('type') == 4:
+                            component = TextInput('apghaw').from_json(e)
+                        row.add_component(component)
+                    self.components.append(row)
 
 
 class ApplicationCommandDataOption:

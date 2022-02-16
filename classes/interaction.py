@@ -1,12 +1,14 @@
 import json
 import os
-from typing import Tuple, Optional
+from typing import Tuple, Optional, Union
 
 import requests
 from requests_toolbelt import MultipartEncoder
 
+import data_models.interaction
 import util
 from classes.channel import TextChannel
+from classes.component import Component, Modal
 from classes.guild import Guild
 from classes.member import GuildMember, User
 from classes.permissions import Permissions
@@ -85,6 +87,12 @@ class Interaction:
             reply = {'type': 4, 'data': {'content': response, 'flags': flags}}
             await self.reply(reply)
 
+    async def ack(self):
+        if self.type == data_models.interaction.InteractionType.MESSAGE_COMPONENT:
+            await self.ack_component()
+        else:
+            await api_call(f'interactions/{self.id}/{self.token}/callback', 'POST', json={'type': 5})
+
     async def error(self, extra: str = None):
         if extra is not None:
             await self.reply('There was an error executing this command: ' + extra, True)
@@ -108,3 +116,13 @@ class Interaction:
 
     async def ack_component(self):
         await api_call(f'/interactions/{self.id}/{self.token}/callback', 'POST', json={'type': 6})
+
+    async def reply_modal(self, components: Union[list, Modal]):
+        if components is None:
+            components = []
+        if isinstance(components, list):
+            components = [i.to_json() for i in components if isinstance(i, Component)]
+        else:
+            components = components.to_json()
+        await api_call(f'/interactions/{self.id}/{self.token}/callback', 'POST',
+                       json={'type': 9, 'data': components})

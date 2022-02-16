@@ -52,9 +52,10 @@ async def on_message_create(data):
 async def on_interaction_create(data, client):
     global command_manager
     interaction = await Interaction(data.get('d')).async_init(data.get('d'), client)
+    if interaction is None:
+        return
     await log(
-        f'{interaction.user.username} used "{interaction.data.name or interaction.data.custom_id}".')
-    # TODO add the rest of the commands
+        f'{interaction.user.username} used "{interaction.data.name or interaction.data.id or "component thing"}".')
     if interaction.type == InteractionType.APPLICATION_COMMAND:
         if interaction.data.name == 'ping':
             await ping.on_command(interaction)
@@ -68,10 +69,12 @@ async def on_interaction_create(data, client):
             await test.on_command(interaction, client)
 
     if interaction.type == InteractionType.MESSAGE_COMPONENT:
-        if interaction.data.custom_id == 'roles_select':
+        if interaction.data.id == 'roles_select':
             await setup.on_select_menu(interaction)
-        if interaction.data.custom_id == 'reset_roles':
+        if interaction.data.id == 'reset_roles':
             await setup.on_reset_roles(interaction)
+    if interaction.type == InteractionType.MODAL_SUBMIT:
+        await interaction.reply(interaction.data.components[0].components[0]._value)
 
 
 async def on_guild_member_add(data):

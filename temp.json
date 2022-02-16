@@ -1,36 +1,18 @@
 {
-    "id": "881396546615279616",
-    "application_id": "870399054964736022",
-    "name": "setup",
-    "description": "sets up a server utility",
-    "version": "897239962649526312",
-    "default_permission": true,
-    "type": 1,
-    "options": [
+    "title": "My Cool Modal",
+    "custom_id": "cool_modal",
+    "components": [
         {
             "type": 1,
-            "name": "rules",
-            "description": "creates the rules message"
-        },
-        {
-            "type": 1,
-            "name": "hints",
-            "description": "creates the helpful hints message"
-        },
-        {
-            "type": 1,
-            "name": "roles",
-            "description": "creates the roles message"
-        },
-        {
-            "type": 1,
-            "name": "membercount",
-            "description": "initializes the member counting system",
-            "options": [
+            "components": [
                 {
-                    "type": 7,
-                    "name": "channel",
-                    "description": "the channel to use to count",
+                    "type": 4,
+                    "custom_id": "name",
+                    "label": "Name",
+                    "style": 1,
+                    "min_length": 1,
+                    "max_length": 4000,
+                    "placeholder": "John",
                     "required": true
                 }
             ]

@@ -25,14 +25,14 @@ async def on_command(interaction: Interaction):
             return
         subcommand = interaction.data.options[0].name
         if subcommand == 'rules':
-            with open('../bot_data/rules.json',
+            with open(f'{config["dir"]}\\bot_data\\rules.json',
                       encoding='utf-8') as file:
                 rules = json.load(file)
                 await interaction.channel.send(rules['img'])
                 await interaction.channel.send(rules['text'])
                 await interaction.reply('Setup successful.', True)
         if subcommand == 'hints':
-            with open('../bot_data/hints.json',
+            with open(f'{config["dir"]}\\bot_data\\hints.json',
                       encoding='utf-8') as file:
                 hints = json.load(file)
                 await interaction.channel.send(hints['img'])
@@ -42,7 +42,7 @@ async def on_command(interaction: Interaction):
             if Permissions.MANAGE_ROLES not in interaction.bot.permissions_list:
                 await interaction.no_permission_bot(Permissions.MANAGE_ROLES)
                 return
-            with open('../bot_data/roles.json',
+            with open(f'{config["dir"]}\\bot_data\\roles.json',
                       encoding='utf-8') as file:
                 roles = json.load(file)
                 await interaction.channel.send(roles)
