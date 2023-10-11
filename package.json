@@ -14,7 +14,7 @@
     "discord.js": "^13.0.0-dev.4f1f32f.1627517033",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.3.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.12",
     "uuid": "^8.3.2"
   },
